@@ -1,8 +1,18 @@
+@font-face{
+    src: url(/general/font/Poppins-Regular.ttf);
+    font-family: "poppins";
+}
+
 body {
-    font-family: 'Bungee Hairline', sans-serif;
+    font-family: poppins;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #1d1d2c;
+    background-image: url(/general/bilder/mc\ back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
 }
 
 
@@ -11,15 +21,16 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #007bff;
-    padding: 10px 20px;
+    padding: 0;
     color: white;
 }
-
+/*
 @media (max-width: 1159px) {
 	.navbar {
 		    flex-wrap: wrap;	
-	}}
-
+	}
+}
+*/
 
 .logo-container img {
     height: 50px;
@@ -49,21 +60,35 @@ body {
     display: block;
 }
 
-.header {
+header {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 100000;
     text-align: center;
-    padding: 20px;
-    background-color: #007bff;
+    padding: 10px;
     color: white;
-    margin-bottom: 20px;
+    background: linear-gradient(180deg, rgba(15,0,66,1) 0%, rgba(0,40,212,1) 50%, rgba(0,108,255,1) 100%);
+    box-shadow: -1px 3px 8px 6px rgba(0,108,255,0.99);
+    margin: 0;
 }
-
+/*
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
     padding: 20px;
 }
-
+*/
+.game-grid{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
 .game-card a {
     display: block;  /* macht den Link zu einem Block-Element */
     text-decoration: none; /* entfernt die Standard-Textdekoration */
@@ -71,20 +96,33 @@ body {
 }
 
 .game-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    min-width: 270px;
+    max-width: 300px;
+    background: rgba(201, 154, 204, 0.303);
+    border: 0px solid #ddd;
+    border-radius: 30px;
     text-align: center;
     padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     overflow: hidden; /* Verhindert, dass das Bild über den Rand hinausgeht */
 }
 
-.game-card:hover {
-		background-color: #ddd;
-	transform: scale(1.05);
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
 
+.game-card:hover {
+    background: rgba(81, 60, 94, 0.485);
+    transition: .3s ease-in-out;
+    /*animation: shake .7s ease-out infinite;*/
 	
 }
 .game-card img {
@@ -98,7 +136,16 @@ body {
     font-weight: bold;
 }
 
-
+.game-title{
+    font-family: poppins;
+    margin: 0;
+}
+.game-title-underline{
+    font-family: poppins;
+    margin-top: 0 !important;
+    padding: 0;
+    line-height: .5;
+}
 .footer-container {
     text-align: center;
     background-color: #333;
