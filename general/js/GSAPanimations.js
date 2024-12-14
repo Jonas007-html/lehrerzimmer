@@ -59,5 +59,5 @@ function openHome(){
 
 
 function openMemory () {
-    window.open("/memory/MinigameMemory.html", "_self");
+    window.open("/lehrerzimmer/memory/MinigameMemory.html", "_self");
 }
