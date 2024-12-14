@@ -1,28 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="de">
+
 <head>
-    <meta charset="UTF-8">
+    <title>Menü1</title>
+    <link rel="icon" type="image/x-icon" href="icon/favicon-16x16.png">
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory</title>
-    <link rel="stylesheet" href="touchScreen/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/c.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
+    
+    
+    <style>
+      /* Change the scrollbar style */
+      ::-webkit-scrollbar {
+        width: 12px; /* Width of the scrollbar */
+        background-color: #F5F5F5; /* Background color of the scrollbar */
+      }
+      
+      /* Change the scrollbar thumb style */
+      ::-webkit-scrollbar-thumb {
+        background-color: #000000; /* Thumb color */
+        border-radius: 5px; /* Rounded corners of the thumb */
+      }
+      
+      /* Change the scrollbar thumb style on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #555; /* Thumb color when hovered */
+      }
+      </style>
+      
 </head>
+
 <body>
-        <main class="content">
-            <header class="header">
-                <h1 class="title">jonas game</h1>
-                <div class="movement">
-                    <h6 class="subtitle">remain</h6>
-                    <div class="available" id="available"></div>
-                </div>
-            </header>
-            <section class="card-container"></section>
-        </main>
-        <div class="modal" id="modal">
-            <div class="modal-container">
-                <h3 class="modal-title" id="modal-title">You win!</h3>
-                <button type="button" class="button" id="play-again">Play Again</button>
-            </div>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="bilder/logoHD.png" alt="NBS Logo"> 
         </div>
-    <script src="touchScreen/script.js"></script>
+        <!--<div class="menu-toggle" id="menu-toggle">
+            <i class="fa fa-bars"></i>
+        </div>-->
+       <ul class="nav-links" id="nav-links">
+            <li><a href="#">Minispiele</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <h1>Minispiele</h1>
+    </header>
+
+    <main>
+        <div class="game-grid">
+
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+<div class="game-card">
+    <a href="#.php" style="text-decoration: none; color:black;">
+        <img src="bilder/android-chrome-512x512.png" alt="Spiel 2">
+        <p class="game-title">Spielname</p>
+        <p class="game-info">Bestzeit: ... by ...</p>
+        <p class="game-info">Von: ...</p>
+    </a>
+</div>
+
+
+
+        </div>
+    </main>
+
+   <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Jonas & Nico  | <a href="#">Impressum</a> | <a href="#">Datenschutz (Gibt es an der Schule sowieso nicht)</a></p>
+        </div>
+    </footer> 
+
+
 </body>
-</html>
