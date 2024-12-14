@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
    });
 
 function openHome(){
-    window.open("/index.html" , "_self")
+    window.open("../index.html" , "_self")
 }
 
 
 function openMemory () {
-    window.open("/lehrerzimmer/memory/MinigameMemory.html", "_self");
+    window.open("../memory/MinigameMemory.html", "_self");
 }
