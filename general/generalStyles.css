@@ -1,5 +1,5 @@
 @font-face{
-    src: url(/font/Poppins-Regular.ttf);
+    src: url(font/Poppins-Regular.ttf);
     font-family: "poppins";
 }
 
@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #1d1d2c;
-    background-image: url(lehrerzimmer/general/bilder/mc\ back.jpg);
+    background-image: url(bilder/mc\ back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
