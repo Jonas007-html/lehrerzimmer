@@ -1,1 +1,1 @@
-# Jonas007-html.github.io
+# collection of games by Nico and Jonas
