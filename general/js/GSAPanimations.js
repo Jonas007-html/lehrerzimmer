@@ -7,7 +7,7 @@ container.appendChild(cration)
 */
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    gsap.registerPlugin(ScrollTrigger,Observer,ScrollToPlugin,TextPlugin)
+    gsap.registerPlugin(ScrollTrigger,Observer,ScrollToPlugin,TextPlugin, CustomEase)
     
     /*
     let link = document.getElementsByClassName("link");
@@ -74,6 +74,17 @@ document.addEventListener('DOMContentLoaded', function() {
         para.textContent = '';
         mainContainer.appendChild(para);
     }
+    let secondOverlay = document.createElement("div");
+    secondOverlay.className = "secondOverlay";
+    secondOverlay.textContent = ""
+    secondOverlay.style.height = "100vh";
+    secondOverlay.style.width = "100%";
+    secondOverlay.style.border = "0px solid black"
+    secondOverlay.style.background = "green"
+    secondOverlay.style.zIndex = "1111"
+
+    mainContainer.appendChild(secondOverlay);
+
     mainContainer.style.position = "fixed";
     mainContainer.style.right = "0";
     mainContainer.style.top = "0";
@@ -95,20 +106,62 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
     */
+    CustomEase.create("snap", "M0,0 C0.142,0.044 0.18,-0.001 0.368,0.084 0.548,0.166 0.461,0.464 0.56,0.708 0.671,0.984 0.727,0.962 1,1 ")
+    
+    
     gsap.set(stripes, {
-        yPercent: 100
+        yPercent: 0
+    }) 
+
+    gsap.fromTo(stripes[0], {
+        yPercent: 0,
+    },{
+        yPercent: -100,
+        duration: 1.5,
+        delay: .1,
+        ease: "snap",
     })
-    let link = document.getElementById("link");
-    link.addEventListener("click", stagger);
+        
+
+    let link = document.getElementsByClassName("link");
+    for(let i = 0; i < 10; i++){
+        link[i].addEventListener("click", stagger);
+        link[i].addEventListener("click", stagger2);
+    }
+    
     function stagger(){
         for(let i = 0; i < anzahl; i++){           
             gsap.fromTo(stripes[0], {
-                yPercent: 500,
+                yPercent: 100,
             },{
                 yPercent: 0,
-                duration: .8,
+                duration: 1.3,
                 delay: 0,
-                ease: "power1.inout",
+                ease: "snap",
+            })
+            }
+    };
+    gsap.set(secondOverlay,{
+        yPercent: 0
+    })
+
+    gsap.fromTo(secondOverlay, {
+        yPercent: -100,
+    },{
+        yPercent: -205,
+        duration: 1.3,
+        delay: 0,
+        ease: "snap",           
+    })
+    function stagger2(){
+        for(let i = 0; i < anzahl; i++){           
+            gsap.fromTo(secondOverlay, {
+                yPercent: 0,
+            },{
+                yPercent: -100,
+                duration: 1.5,
+                delay: .1,
+                ease: "snap",           
             })
             }
     };
