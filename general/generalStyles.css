@@ -9,7 +9,10 @@ body {
     padding: 0;
     background-color: #1d1d2c;
     /*background-image: url(bilder/mc\ back.jpg);*/
+    
     background-image: url(bilder/nbs.jpg);
+    backdrop-filter: blur(4px);
+
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -91,15 +94,15 @@ header {
     justify-content: center;
 }
 .game-card a {
-    display: block;  /* macht den Link zu einem Block-Element */
-    text-decoration: none; /* entfernt die Standard-Textdekoration */
-    color: black; /* Textfarbe */
+    display: block; 
+    text-decoration: none; 
+    color: black; 
 }
 
 .game-card {
     min-width: 270px;
     max-width: 300px;
-    background: rgba(201, 154, 204, 0.303);
+    background: rgba(231, 231, 231, 0.6);
     border: 0px solid #ddd;
     border-radius: 30px;
     text-align: center;
@@ -109,7 +112,7 @@ header {
     margin: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    overflow: hidden; /* Verhindert, dass das Bild über den Rand hinausgeht */
+    overflow: hidden; 
 }
 
 @keyframes shake {
@@ -121,9 +124,9 @@ header {
 }
 
 .game-card:hover {
-    background: rgba(81, 60, 94, 0.485);
+    background: rgba(255, 255, 255, 0.60);
     transition: .3s ease-in-out;
-    /*animation: shake .7s ease-out infinite;*/
+    
 	
 }
 .game-card img {
@@ -149,6 +152,7 @@ header {
 }
 .footer-container {
     text-align: center;
+    box-shadow: 0px -20px 20px 2px #333;
     background-color: #333;
     color: white;
     padding: 10px 0;
@@ -184,3 +188,22 @@ header {
     height: 12.5%;
     background: rgb(106, 19, 199);
 }
+
+
+.animated-text {
+    font-family: monospace;
+    overflow: hidden;
+    height:1.1em;
+    word-wrap: break-word;
+    white-space: nowrap;
+    animation: typing 4s steps(48) forwards;
+  } 
+  
+  @keyframes typing {
+     from {
+        width: 0;
+     }
+     to {
+        width: 48ch;
+     }
+  }
