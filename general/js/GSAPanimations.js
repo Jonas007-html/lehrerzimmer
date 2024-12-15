@@ -67,16 +67,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener('DOMContentLoaded', function() {
     let mainContainer = document.getElementById("transition");
-    mainContainer.style.height = "auto"
-    for (let i = 0; i < 6; i++) {
+    let anzahl = 6;
+    for (let i = 0; i < anzahl; i++) {
         let para = document.createElement("p");
-        para.textContent = 'Lorem ipsum..............Lorem';
+        para.className = "containerChild"
+        para.textContent = 'NBS';
         mainContainer.appendChild(para);
     }
     mainContainer.style.position = "fixed";
     mainContainer.style.right = "0";
     mainContainer.style.top = "0";
     mainContainer.style.zIndex = "10000000000000000000000";
+    mainContainer.style.height = "100vh"
+
+    let stripes = document.getElementsByClassName("containerChild");
+    for(let i = 0; i < anzahl; i++){
+        stripes.style.fontSize = "100px"
+    }
 });
 
 
