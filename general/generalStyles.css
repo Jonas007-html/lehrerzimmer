@@ -190,20 +190,9 @@ header {
 }
 
 
-.animated-text {
-    font-family: monospace;
-    overflow: hidden;
-    height:1.1em;
-    word-wrap: break-word;
-    white-space: nowrap;
-    animation: typing 4s steps(48) forwards;
-  } 
-  
-  @keyframes typing {
-     from {
-        width: 0;
-     }
-     to {
-        width: 48ch;
-     }
-  }
+#text path {
+    stroke: #b29146;
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 2432;
+    animation: fillSvg 30s linear forwards; }
