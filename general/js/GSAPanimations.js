@@ -9,7 +9,7 @@ container.appendChild(cration)
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger,Observer,ScrollToPlugin,TextPlugin)
     
-    
+    /*
     let link = document.getElementsByClassName("link");
     const square = document.querySelector('.square');
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             square.classList.add(startOverlay());
         });
     };
-    
+    */
     //neue animation
     
     
@@ -67,11 +67,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener('DOMContentLoaded', function() {
     let mainContainer = document.getElementById("transition");
-    let anzahl = 6;
+    let anzahl = 1;
     for (let i = 0; i < anzahl; i++) {
-        let para = document.createElement("p");
+        let para = document.createElement("div");
         para.className = "containerChild"
-        para.textContent = 'NBS';
+        para.textContent = '';
         mainContainer.appendChild(para);
     }
     mainContainer.style.position = "fixed";
@@ -79,15 +79,41 @@ document.addEventListener('DOMContentLoaded', function() {
     mainContainer.style.top = "0";
     mainContainer.style.zIndex = "10000000000000000000000";
     mainContainer.style.height = "100vh"
+    mainContainer.style.padding = "0"  
+    mainContainer.style.pointerEvents = "none"  
 
     let stripes = document.getElementsByClassName("containerChild");
     for(let i = 0; i < anzahl; i++){
-        stripes[i].style.fontSize = "100px"
+        stripes[i].style.height = "100%";
+        stripes[i].style.border = "2px solid black"
+        stripes[i].style.background = "red"
     }
-});
+    /*
+    for(let i = 0; i < anzahl; i++){
+        gsap.to(stripes[i], {
+            x: 100,
+        })
+    }
+    */
+    gsap.set(stripes, {
+        yPercent: 100
+    })
+    let link = document.getElementById("link");
+    link.addEventListener("click", stagger);
+    function stagger(){
+        for(let i = 0; i < anzahl; i++){           
+            gsap.fromTo(stripes[0], {
+                yPercent: 500,
+            },{
+                yPercent: 0,
+                duration: .8,
+                delay: 0,
+                ease: "power1.inout",
+            })
+            }
+    };
 
-
-
+})
 
 
     
