@@ -194,5 +194,16 @@ header {
     stroke: #b29146;
     stroke-width: 1;
     fill: none;
-    stroke-dasharray: 2432;
+    stroke-dasharray: 1133;
     animation: fillSvg 30s linear forwards; }
+
+    @keyframes fillSvg {
+        0% {
+            stroke-dashoffset: 1133;
+        }
+
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
