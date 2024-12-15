@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let stripes = document.getElementsByClassName("containerChild");
     for(let i = 0; i < anzahl; i++){
-        stripes.style.fontSize = "100px"
+        stripes[i].style.fontSize = "100px"
     }
 });
 
