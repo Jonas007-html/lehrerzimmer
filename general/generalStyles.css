@@ -14,7 +14,6 @@ body {
     /*background-image: url(bilder/mc\ back.jpg);*/
     
     background-image: url(bilder/nbs.jpg);
-    /*backdrop-filter: blur(4px);*/
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -192,7 +191,7 @@ header {
     background: rgb(106, 19, 199);
 }
 
-/*
+
 #text path {
     stroke: #b29146;
     stroke-width: 1;
@@ -209,14 +208,13 @@ header {
             stroke-dashoffset: 0;
         }
     }
-        */
-.home{
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
-    border-radius: 100px;
-    background-color: #262626;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    }
+    .home{
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        border-radius: 100px;
+        background-color: #262626;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+      }
