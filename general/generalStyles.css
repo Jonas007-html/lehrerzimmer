@@ -2,11 +2,14 @@
     src: url(font/Poppins-Regular.ttf);
     font-family: "poppins";
 }
-
+html{
+    box-sizing: border-box;
+}
 body {
     font-family: poppins;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     background-color: #1d1d2c;
     /*background-image: url(bilder/mc\ back.jpg);*/
     
@@ -169,7 +172,7 @@ header {
 }
 .overlayer{
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     pointer-events: none;
     z-index: 10000000000;
@@ -206,4 +209,13 @@ header {
             stroke-dashoffset: 0;
         }
     }
-
+    .home{
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        border-radius: 100px;
+        background-color: #262626;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+      }

@@ -1,3 +1,11 @@
+/*
+let container = document.getElementsByClassName("1");
+let cration = document.createElement("div")
+
+container.appendChild(cration)
+
+*/
+
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger,Observer,ScrollToPlugin,TextPlugin)
     
@@ -51,7 +59,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     };
     
-   });
+    //neue animation
+    
+    
+
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let mainContainer = document.getElementById("transition");
+    mainContainer.style.height = "auto"
+    for (let i = 0; i < 6; i++) {
+        let para = document.createElement("p");
+        para.textContent = 'Lorem ipsum..............Lorem';
+        mainContainer.appendChild(para);
+    }
+    mainContainer.style.position = "fixed";
+    mainContainer.style.right = "0";
+    mainContainer.style.top = "0";
+    mainContainer.style.zIndex = "10000000000000000000000";
+});
+
+
+
+
+
+    
+
+
 
 function openHome(){
     window.open("../index.html" , "_self")
