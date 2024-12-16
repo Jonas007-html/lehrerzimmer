@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener('DOMContentLoaded', function() {
     let mainContainer = document.getElementById("transition");
+    /*
     let anzahl = 1;
     for (let i = 0; i < anzahl; i++) {
         let para = document.createElement("div");
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.set(secondOverlay,{
         yPercent: 0
     })
-
+    /*
     function openSite(){
         gsap.fromTo(secondOverlay, {
             yPercent: -100,
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
     openSite();
-    /*
+    */
     gsap.fromTo(secondOverlay, {
         yPercent: -100,
     },{
@@ -161,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 0,
         ease: "snap",           
     })
-        */
+        
     function stagger2(){
         for(let i = 0; i < anzahl; i++){           
             gsap.fromTo(secondOverlay, {
