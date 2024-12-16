@@ -139,15 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 delay: 0,
                 ease: "snap",
             })
-        }    
-        gsap.fromTo(stripes[0], {
-            yPercent: 0,
-        },{
-            yPercent: -100,
-            duration: 1.5,
-            delay: 1.1,
-            ease: "snap",
-        })           
+        }              
     };
     gsap.set(secondOverlay,{
         yPercent: 0
@@ -184,15 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 delay: .1,
                 ease: "snap",           
             })
-        }
-        gsap.fromTo(secondOverlay, {
-            yPercent: -100,
-        },{
-            yPercent: -205,
-            duration: 1.3,
-            delay: 1,
-            ease: "snap",           
-        })
+        }      
     };
     let link = document.getElementsByClassName("link");
     for(let i = 0; i < 10; i++){
