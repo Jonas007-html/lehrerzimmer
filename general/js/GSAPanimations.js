@@ -93,8 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
     mainContainer.style.width = "100vw";
     mainContainer.style.padding = "0"  
     mainContainer.style.pointerEvents = "none"  
-
+*/
     let stripes = document.getElementsByClassName("containerChild");
+/*
     for(let i = 0; i < anzahl; i++){
         stripes[i].style.height = "100%";
         stripes[i].style.border = "0px solid black"
