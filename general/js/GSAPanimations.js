@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mainContainer.style.pointerEvents = "none"  
 */
     let stripes = document.getElementsByClassName("containerChild");
+    let secondOverlay = document.getElementsByClassName("secondOverlay")
 /*
     for(let i = 0; i < anzahl; i++){
         stripes[i].style.height = "100%";
