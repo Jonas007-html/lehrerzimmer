@@ -67,8 +67,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener('DOMContentLoaded', function() {
     let mainContainer = document.getElementById("transition");
-    /*
+    
     let anzahl = 1;
+    /*
     for (let i = 0; i < anzahl; i++) {
         let para = document.createElement("div");
         para.className = "containerChild"
