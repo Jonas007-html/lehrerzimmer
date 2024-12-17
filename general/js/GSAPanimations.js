@@ -198,3 +198,7 @@ function openHome(){
 function openMemory () {
     window.open("memory/MinigameMemory.html", "_self");
 }
+
+function openSenso () {
+    window.open("senso/MinigameSenso.html", "_self");
+}

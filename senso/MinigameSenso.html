@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senso</title>
+    <link rel="stylesheet" href="/lehrerzimmer/general/generalStyles.css">
+    <link rel="icon" type="image/x-icon" href="/general/bilder/favicon-16x16.png">
+    <link rel="stylesheet" href="senso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="transition">
+        <div class="containerChild" style="height: 100%; border: 0px solid black; background: linear-gradient(146deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 35%, rgb(0, 212, 255) 100%)"></div>
+        <div class="secondOverlay" style="height: 100vh; width: 100vw; border: 0px solid black; background: rgb(17, 17, 17); z-index: 1111"></div>
+    </div>
+
+    <div id="game">
+        <div id="rot" class="farbe"></div>
+        <div id="blau" class="farbe"></div>
+        <div id="gruen" class="farbe"></div>
+        <div id="gelb" class="farbe"></div>
+    </div>
+    <div class="link home" id="link" onclick="setTimeout(openHome, 1700)">
+        <p> HOME <i class="fa fa-home" aria-hidden="true"></i> </p>
+    </div>
+    <script src="senso.js"></script>
+    <script src="/lehrerzimmer/general/js/GSAPanimations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Observer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+</body>
+</html>

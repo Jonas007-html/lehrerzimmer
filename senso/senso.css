@@ -1,0 +1,22 @@
+.farbe{
+    width: 100px;
+    height: 100px;
+    background: lightgray;
+    margin: 5px;
+}
+
+#game{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 100px;
+    background-color: #262626;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+  }
