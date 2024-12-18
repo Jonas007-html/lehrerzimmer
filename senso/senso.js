@@ -186,6 +186,7 @@ let computerIntervall = setInterval( function farbenDarstellen(){
     }else{
         //console.log("intervall gestoppt")
         stoppComputerIntervall();
+        erstelleZufallsFarbe(); // damit wenn die Funtion wieder aufgerufen wird eine farbe hinzu gekommen ist
         loopLenght = 0;
         loopCounter = 0;
     }
