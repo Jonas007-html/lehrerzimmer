@@ -32,3 +32,11 @@ function displayRankings() {
     });
 }
 window.onload = displayRankings;
+
+
+
+function resetRankings() {
+    localStorage.clear();
+    alert(" Rankings zurückgesetzt");
+    displayRankings();
+}
