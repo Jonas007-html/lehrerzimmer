@@ -105,7 +105,7 @@ let alleFarben = []
 
 function erstelleZufallsFarbe() {
     let createRandomFarbe = Math.floor(Math.random() * 2) + 1;
-    alleFarben = alleFarben.push(createRandomFarbe)
+    alleFarben.push(createRandomFarbe)
 }
 
 erstelleZufallsFarbe();
