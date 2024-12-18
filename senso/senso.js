@@ -130,7 +130,7 @@ async function farbenDurchlaufen() {
             //console.log("in blauer kleiner schleife")
         }
         erstelleZufallsFarbe();
-        //console.log(alleFarben)
+        console.log(alleFarben)
     }
 
     console.log("ganz am ende angelangt")
