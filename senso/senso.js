@@ -21,6 +21,7 @@ let rot = document.getElementById("rot")
 
 function setRot(rotStatus){
     return new Promise((resolve) => {
+        /*
         if(rotStatus = 1){
             rot.style.background = "red"
         }else{
@@ -34,6 +35,12 @@ function setRot(rotStatus){
             };
             resolve();
         }, 1000);
+        */
+       rot.style.background = "red"
+       setTimeout(() => {
+           rot.style.background = "lightgrey";
+           resolve();
+       }, 1000);
         //console.log("rot abgespielt")
     })    
 }
@@ -98,7 +105,7 @@ let alleFarben = []
 
 function erstelleZufallsFarbe() {
     let createRandomFarbe = Math.floor(Math.random() * 2) + 1;
-    alleFarben.push(createRandomFarbe)
+    alleFarben = alleFarben.push(createRandomFarbe)
 }
 
 erstelleZufallsFarbe();
