@@ -2,15 +2,13 @@
     src: url(font/Poppins-Regular.ttf);
     font-family: "poppins";
 }
- /* Hide scrollbar for Chrome, Safari and Opera */
  html::-webkit-scrollbar {
     display: none;
 }    
 html{
     box-sizing: border-box;
-     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
 }
 body {
     font-family: poppins;
@@ -162,7 +160,7 @@ header {
 }
 .footer-container {
     text-align: center;
-    box-shadow: 0px -20px 20px 2px #333;
+    box-shadow: 0px 0px 18px 25px #333;
     background-color: #333;
     color: white;
     padding: 10px 0;
