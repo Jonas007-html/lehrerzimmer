@@ -129,7 +129,7 @@ async function farbenDurchlaufen() {
             await lassSekundenVergehen()
             //console.log("in blauer kleiner schleife")
         }
-        //erstelleZufallsFarbe();
+        erstelleZufallsFarbe();
         //console.log(alleFarben)
     }
 
