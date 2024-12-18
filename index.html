@@ -83,7 +83,7 @@
     <main>
         
         <div class="game-grid">
-            <div class="game-card link" onclick="setTimeout(openMemory, 1700)">
+            <!-- <div class="game-card link" onclick="setTimeout(openMemory, 1700)">
                 <a href="#.html" style="text-decoration: none; color:black;">
                     <img src="general/bilder/finalLogo.png" alt="Spiel 2">
                     <p class="game-title">Memory</p>
@@ -91,7 +91,18 @@
                     <p class="game-info">Bestzeit: 10 Züge</p>
                     <p class="game-info">Von: "Jonas Kummer WG1a"</p>
                 </a>
+            </div>-->
+
+            <div class="game-card link" onclick="setTimeout(openMemory, 1700)">
+                    <a href="#.html" style="text-decoration: none; color:black;">
+                    <img src="general/bilder/finalLogo.png" alt="Memory-Spiel">
+                    <p class="game-title">Memory</p>
+                    <p class="game-title-underline">--------------------</p>
+                    <p class="game-info" id="memory-bestzeit">Bestzeit: -</p>
+                    <p class="game-info" id="memory-player">Von: -</p>
+                </a>
             </div>
+
             <div class="game-card link" id="link" onclick="setTimeout(openSenso, 1700)">
                 <a href="#.html" style="text-decoration: none; color:black;">
                     <img src="general/bilder/finalLogo.png" alt="Spiel 2">
@@ -171,7 +182,7 @@
     </main>
     <footer>
         <div class="footer-container">
-            <p>&copy; 2024 Jonas Kummer (CEO) & Nico Volz (Assistant)  <br> <a href="#">Impressum</a> | <a href="#"><s>Datenschutz </s> (Gibt es an der Schule sowieso nicht)</a></p>
+            <p>&copy; 2024 Jonas Kummer (CEO) & Nico Volz (Design oder so?)  <br> <a href="#">Impressum</a> | <a href="#"><s>Datenschutz </s> (Gibt es an der Schule sowieso nicht)</a></p>
         </div>
     </footer> 
 
@@ -183,5 +194,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
 <script src="general/js/GSAPanimations.js"></script>
+<script src="ranking/rankingj.js"></script>
+
 
 </html>
