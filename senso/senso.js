@@ -9,6 +9,7 @@ function stateChange(newState) {
 
 stateChange(-1);
 */
+/*
 function lassSekundenVergehen(){
     return new Promise((sekundeVergangen) => {
         setTimeout(() => {
@@ -21,6 +22,7 @@ let rot = document.getElementById("rot")
 
 function setRot(rotStatus){
     return new Promise((resolve) => {
+        */
         /*
         if(rotStatus = 1){
             rot.style.background = "red"
@@ -36,6 +38,7 @@ function setRot(rotStatus){
             resolve();
         }, 1000);
         */
+       /*
        rot.style.background = "red"
        setTimeout(() => {
            rot.style.background = "lightgrey";
@@ -101,6 +104,7 @@ if(gelbStatus == 1){
     gelb.style.background = "lightgray"
 }
 */
+/*
 let alleFarben = []
 
 function erstelleZufallsFarbe() {
@@ -108,10 +112,6 @@ function erstelleZufallsFarbe() {
     alleFarben.push(createRandomFarbe)
 }
 
-erstelleZufallsFarbe();
-erstelleZufallsFarbe();
-erstelleZufallsFarbe();
-erstelleZufallsFarbe();
 erstelleZufallsFarbe();
 
 console.log(alleFarben)
@@ -138,4 +138,56 @@ async function farbenDurchlaufen() {
 
 
 farbenDurchlaufen()
+*/
 
+
+let rot = document.getElementById("rot")
+let blau = document.getElementById("blau")
+
+let zufallsFarbe = []
+function erstelleZufallsFarbe() {
+    let createRandomFarbe = Math.floor(Math.random() * 2) + 1;
+    zufallsFarbe.push(createRandomFarbe)
+}
+erstelleZufallsFarbe()
+erstelleZufallsFarbe()
+erstelleZufallsFarbe()
+
+console.log(zufallsFarbe)
+
+let loopCounter = 0;
+let loopLenght = 0;
+
+function stoppComputerIntervall(){
+    clearInterval(computerIntervall)
+}
+
+
+let computerIntervall = setInterval( function farbenDarstellen(){
+    loopLenght++;
+    if(loopLenght <= zufallsFarbe.length){
+        if(zufallsFarbe[loopCounter] == 1){
+            rot.style.background = "red";
+            //console.log("rot gemacht")
+            setTimeout( () => {
+                rot.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 1000)
+        }else if(zufallsFarbe[loopCounter] == 2){
+            blau.style.background = "blue";
+            //console.log("blau gemacht")
+            setTimeout( () => {
+                blau.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 1000)
+        }
+        loopCounter++;
+        //console.log("noch in while schleife")
+    }else{
+        //console.log("intervall gestoppt")
+        stoppComputerIntervall();
+        loopLenght = 0;
+        loopCounter = 0;
+    }
+    //console.log("aus schleife fertig")
+}, 2000)
