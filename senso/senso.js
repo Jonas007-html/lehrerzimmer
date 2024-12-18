@@ -164,6 +164,9 @@ function stoppComputerIntervall(){
     clearInterval(computerIntervall)
 }
 
+function startInterval() {
+    setInterval(computerIntervall)
+}
 
 let computerIntervall = setInterval( function farbenDarstellen(){
     loopLenght++;
@@ -196,70 +199,161 @@ let computerIntervall = setInterval( function farbenDarstellen(){
 }, 2000)
 
 
+/*
+let clickCounter = 0;
 
+async function userInput() {
+    setTimeout(() => {
+        window.alert("Klicke nun die Felder in der richtigen Reihenfolge an!");
+    }, 1000);
+
+    function pruefung() {
+        return new Promise((resolve) => {
+            if (clickCounter < zufallsFarbe.length) {
+                rot.onclick = function(e) {
+                    console.log("rot ist angeklickt worden");
+                    if (zufallsFarbe[clickCounter] == 1 && rot == e.target) {
+                        console.log("passt");
+                        clickCounter++;
+                        pruefung();
+                    } else {
+                        window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                        clickCounter = 0;
+                        resolve();
+                    }
+                };
+                blau.onclick = function(e) {
+                    console.log("blau ist angeklickt worden");
+                    if (zufallsFarbe[clickCounter] == 2 && blau == e.target) {
+                        console.log("passt");
+                        clickCounter++;
+                        pruefung();
+                    } else {
+                        window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                        clickCounter = 0;
+                        resolve();
+                    }
+                };
+            } else {
+                window.alert("Das Ende wurde erreicht");
+                resolve();
+            }
+        });
+    }
+
+    pruefung().then(() => {
+        console.log("die funktion prüfung wurde komplett abgeschlossen");
+        erstelleZufallsFarbe();
+    });
+}
+*/
+let clickCounter = 0;
+
+async function userInput() {
+    setTimeout(() => {
+        window.alert("Klicke nun die Felder in der richtigen Reihenfolge an!");
+    }, 1000);
+
+    function pruefung() {
+        return new Promise((resolve) => {
+            if (clickCounter < zufallsFarbe.length) {
+                const handleRotClick = (e) => {
+                    console.log("rot ist angeklickt worden");
+                    if (zufallsFarbe[clickCounter] == 1 && rot == e.target) {
+                        console.log("passt");
+                        clickCounter++;
+                        rot.removeEventListener("click", handleRotClick);
+                        pruefung().then(resolve);
+                    } else {
+                        window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                        clickCounter = 0;
+                        rot.removeEventListener("click", handleRotClick);
+                        resolve();
+                    }
+                };
+
+                const handleBlauClick = (e) => {
+                    console.log("blau ist angeklickt worden");
+                    if (zufallsFarbe[clickCounter] == 2 && blau == e.target) {
+                        console.log("passt");
+                        clickCounter++;
+                        blau.removeEventListener("click", handleBlauClick);
+                        pruefung().then(resolve);
+                    } else {
+                        window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                        clickCounter = 0;
+                        blau.removeEventListener("click", handleBlauClick);
+                        resolve();
+                    }
+                };
+
+                rot.addEventListener("click", handleRotClick);
+                blau.addEventListener("click", handleBlauClick);
+            } else {
+                window.alert("Das Ende wurde erreicht");
+                resolve();
+            }
+        });
+    }
+
+    pruefung().then(() => {
+        console.log("die funktion prüfung wurde komplett abgeschlossen");
+        erstelleZufallsFarbe();
+        startInterval()
+    });
+}
+
+/*
 let clickCounter = 0;
 
 function userInput() {
     setTimeout(() => {
-        window.alert("Klicke nun die Felder in der richtigen Reichenfolge an!");
+        window.alert("Klicke nun die Felder in der richtigen Reihenfolge an!");
     }, 1000);
 
-        function pruefung() {
-            rot.onclick = function(e) {
-                console.log("rot ist angeklickt worden");
-                if (zufallsFarbe[clickCounter] == 1 && rot == e.target) {
-                    console.log("passt");
-                    clickCounter++;
-                    pruefung();
-                    return;
-                } else {
-                    window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
-                    //clickCounter = 0;
-                    return;
-                }
-            }
-            blau.onclick = function(e) {
-                console.log("blau ist angeklickt worden");
-                if (zufallsFarbe[clickCounter] == 2 && blau == e.target) {
-                    console.log("passt");
-                    clickCounter++;
-                    pruefung();
-                    return;
-                } else {
-                    window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
-                    //clickCounter = 0;
-                    return;
-                }
-            }
+    function pruefung() {
+        if (clickCounter >= zufallsFarbe.length) {
+            //window.alert("Du hast die richtige Reihenfolge geklickt! Neue Farbe wird hinzugefügt.");
+            erstelleZufallsFarbe();
+            console.log("die funktion prüfung wurde komplett abgeschlossen");
+            return; // Stops the execution of pruefung
         }
-        pruefung();
-        window.alert("die funktion prüfung wurde kompett abgeschlossen")
-        /*
-        rot.addEventListener("click", (e) => {
+
+        const handleRotClick = (e) => {
             console.log("rot ist angeklickt worden");
             if (zufallsFarbe[clickCounter] == 1 && rot == e.target) {
                 console.log("passt");
-                clickCounter++;              
+                clickCounter++;
+                rot.removeEventListener("click", handleRotClick);
+                pruefung(); // Calls pruefung again
             } else {
-                window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
-                clickCounter = 0;          
+                console.log("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                //clickCounter = 0;
+                rot.removeEventListener("click", handleRotClick);
             }
-        });
+        };
 
-        blau.addEventListener("click", (e) => {
+        const handleBlauClick = (e) => {
             console.log("blau ist angeklickt worden");
             if (zufallsFarbe[clickCounter] == 2 && blau == e.target) {
-                console.log("passt");              
-                clickCounter++;                    
+                console.log("passt");
+                clickCounter++;
+                blau.removeEventListener("click", handleBlauClick);
+                pruefung(); // Calls pruefung again
             } else {
-                window.alert("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
-                clickCounter = 0;               
+                console.log("Das falsche Feld wurde angeklickt! Das Spiel wird von neuem gestartet");
+                //clickCounter = 0;
+                blau.removeEventListener("click", handleBlauClick);
             }
-        });   
-        */ 
-   
-}
+        };
 
+        rot.addEventListener("click", handleRotClick);
+        blau.addEventListener("click", handleBlauClick);
+    }
+
+    pruefung(); // Initial call to pruefung
+}
+    */
 /*
 let clickCounter = 0;
 
