@@ -150,8 +150,6 @@ function erstelleZufallsFarbe() {
     zufallsFarbe.push(createRandomFarbe)
 }
 erstelleZufallsFarbe()
-erstelleZufallsFarbe()
-erstelleZufallsFarbe()
 
 
 
@@ -165,38 +163,89 @@ function stoppComputerIntervall(){
 }
 
 function startInterval() {
-    setInterval(computerIntervall)
+    //startInterval(computerIntervall, 2000)
+    computerIntervall = setInterval( function farbenDarstellen(){
+        loopLenght++;
+        if(loopLenght <= zufallsFarbe.length){
+            if(zufallsFarbe[loopCounter] == 1){
+                rot.style.background = "red";
+                //console.log("rot gemacht")
+                setTimeout( () => {
+                    rot.style.background = "lightgray"
+                    //console.log("farbe entfernt")
+                }, 1000)
+            }else if(zufallsFarbe[loopCounter] == 2){
+                blau.style.background = "blue";
+                //console.log("blau gemacht")
+                setTimeout( () => {
+                    blau.style.background = "lightgray"
+                    //console.log("farbe entfernt")
+                }, 1000)
+            }
+            loopCounter++;
+            //console.log("noch in while schleife")
+        }else{
+            //console.log("intervall gestoppt")
+            stoppComputerIntervall();
+            detectClick();
+            loopLenght = 0;
+            loopCounter = 0;
+        }
+        //console.log("aus schleife fertig")
+    }, 2000)
+    
 }
 
-let computerIntervall = setInterval( function farbenDarstellen(){
-    loopLenght++;
-    if(loopLenght <= zufallsFarbe.length){
-        if(zufallsFarbe[loopCounter] == 1){
-            rot.style.background = "red";
-            //console.log("rot gemacht")
-            setTimeout( () => {
-                rot.style.background = "lightgray"
-                //console.log("farbe entfernt")
-            }, 1000)
-        }else if(zufallsFarbe[loopCounter] == 2){
-            blau.style.background = "blue";
-            //console.log("blau gemacht")
-            setTimeout( () => {
-                blau.style.background = "lightgray"
-                //console.log("farbe entfernt")
-            }, 1000)
+startInterval();
+
+
+
+let clickCounter = -1;
+function detectClick(){
+    let kaesten = document.getElementsByClassName("farbe");
+    for(let i = 0; i < kaesten.length; i++){
+        kaesten[i].onclick = () => {
+            console.log("geklickt")
+            clickCounter++;
+            //console.log(clickCounter)
+            //console.log(kaesten[i].getAttribute("id"))
+            let geklickteFarbe = kaesten[i].getAttribute("id");
+            auswertung(geklickteFarbe);
         }
-        loopCounter++;
-        //console.log("noch in while schleife")
-    }else{
-        //console.log("intervall gestoppt")
-        stoppComputerIntervall();
-        userInput();
-        loopLenght = 0;
-        loopCounter = 0;
     }
-    //console.log("aus schleife fertig")
-}, 2000)
+    //return kaesten;
+}
+
+function auswertung(geklickteFarbe) {
+    if((zufallsFarbe[clickCounter] == 1 && geklickteFarbe == "rot") || (zufallsFarbe[clickCounter] == 2 && geklickteFarbe == "blau")){
+        console.log("passt")
+        if(clickCounter == zufallsFarbe.length - 1){
+            console.log("alle abgegeben")
+            disableClick();
+            erstelleZufallsFarbe();
+            console.log(zufallsFarbe)
+            startInterval();
+            clickCounter = -1;
+        }
+    }else{
+        console.log("falsch")
+        disableClick();
+        startInterval();
+        clickCounter = -1;
+    }
+}
+
+function disableClick() {
+    let kaesten = document.getElementsByClassName("farbe");
+    for (let i = 0; i < kaesten.length; i++) {
+        kaesten[i].onclick = null;
+    }
+}
+
+
+
+
+
 
 
 /*
@@ -247,6 +296,7 @@ async function userInput() {
     });
 }
 */
+/*
 let clickCounter = 0;
 
 async function userInput() {
