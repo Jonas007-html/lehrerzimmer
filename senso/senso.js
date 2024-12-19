@@ -3,11 +3,12 @@
 
 let rot = document.getElementById("rot")
 let blau = document.getElementById("blau")
-
+let gruen = document.getElementById("gruen")
+let gelb = document.getElementById("gelb")
 
 let zufallsFarbe = []
 function erstelleZufallsFarbe() {
-    let createRandomFarbe = Math.floor(Math.random() * 2) + 1;
+    let createRandomFarbe = Math.floor(Math.random() * 4) + 1;
     zufallsFarbe.push(createRandomFarbe)
 }
 erstelleZufallsFarbe()
@@ -40,6 +41,20 @@ function startInterval() {
                 //console.log("blau gemacht")
                 setTimeout( () => {
                     blau.style.background = "lightgray"
+                    //console.log("farbe entfernt")
+                }, 1000)
+            }else if(zufallsFarbe[loopCounter] == 3){
+                gruen.style.background = "green";
+                //console.log("blau gemacht")
+                setTimeout( () => {
+                    gruen.style.background = "lightgray"
+                    //console.log("farbe entfernt")
+                }, 1000)
+            }else if(zufallsFarbe[loopCounter] == 4){
+                gelb.style.background = "yellow";
+                //console.log("blau gemacht")
+                setTimeout( () => {
+                    gelb.style.background = "lightgray"
                     //console.log("farbe entfernt")
                 }, 1000)
             }
@@ -79,7 +94,7 @@ function detectClick(){
 }
 
 function auswertung(geklickteFarbe) {
-    if((zufallsFarbe[clickCounter] == 1 && geklickteFarbe == "rot") || (zufallsFarbe[clickCounter] == 2 && geklickteFarbe == "blau")){
+    if((zufallsFarbe[clickCounter] == 1 && geklickteFarbe == "rot") || (zufallsFarbe[clickCounter] == 2 && geklickteFarbe == "blau") || (zufallsFarbe[clickCounter] == 3 && geklickteFarbe == "gruen") || (zufallsFarbe[clickCounter] == 4 && geklickteFarbe == "gelb")){
         console.log("passt")
         if(geklickteFarbe == "rot"){
              rot.style.background = "red";
@@ -92,7 +107,19 @@ function auswertung(geklickteFarbe) {
             setTimeout(() => {
                blau.style.background = "lightgray"
             }, 200);
-       }
+        }
+        if(geklickteFarbe == "gelb"){
+            gelb.style.background = "yellow";
+            setTimeout(() => {
+                gelb.style.background = "lightgray"
+            }, 200);
+        }
+        if(geklickteFarbe == "gruen"){
+            gruen.style.background = "green";
+            setTimeout(() => {
+                gruen.style.background = "lightgray"
+            }, 200);
+        }
         if(clickCounter == zufallsFarbe.length - 1){
             console.log("alle abgegeben")
             disableClick();
