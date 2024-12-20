@@ -33,43 +33,32 @@ function startInterval() {
                 if(loopLenght <= zufallsFarbe.length){
                     if(zufallsFarbe[loopCounter] == 1){
                         rot.style.background = "red";
-                        //console.log("rot gemacht")
                         setTimeout( () => {
                             rot.style.background = "lightgray"
-                            //console.log("farbe entfernt")
                         }, 700)
                     }else if(zufallsFarbe[loopCounter] == 2){
                         blau.style.background = "blue";
-                        //console.log("blau gemacht")
                         setTimeout( () => {
                             blau.style.background = "lightgray"
-                            //console.log("farbe entfernt")
                         }, 700)
                     }else if(zufallsFarbe[loopCounter] == 3){
                         gruen.style.background = "green";
-                        //console.log("grün gemacht")
                         setTimeout( () => {
                             gruen.style.background = "lightgray"
-                            //console.log("farbe entfernt")
                         }, 700)
                     }else if(zufallsFarbe[loopCounter] == 4){
                         gelb.style.background = "yellow";
-                        //console.log("gelb gemacht")
                         setTimeout( () => {
                             gelb.style.background = "lightgray"
-                            //console.log("farbe entfernt")
                         }, 700)
                     }
                     loopCounter++;
-                    //console.log("noch in while schleife")
                 }else{
-                    //console.log("intervall gestoppt")
                     stoppComputerIntervall();
                     detectClick();
                     loopLenght = 0;
                     loopCounter = 0;
                 }
-                //console.log("aus schleife fertig")
             }, 1300)
     }else{
         nurLetzteFarbeZeigen();
@@ -103,13 +92,10 @@ function detectClick(){
         kaesten[i].onclick = () => {
             console.log("geklickt")
             clickCounter++;
-            //console.log(clickCounter)
-            //console.log(kaesten[i].getAttribute("id"))
             let geklickteFarbe = kaesten[i].getAttribute("id");
             auswertung(geklickteFarbe);
         }
     }
-    //return kaesten;
 }
 
 function auswertung(geklickteFarbe) {
@@ -162,7 +148,6 @@ function auswertung(geklickteFarbe) {
         calcDurchschnitt();
         zufallsFarbe = [];
         erstelleZufallsFarbe();
-        //startInterval();
         startButton.innerHTML = "Neustart";
         startGame();
         clickCounter = -1;
@@ -265,32 +250,24 @@ function nurLetzteFarbeZeigen() {
     stoppComputerIntervall();  
     setTimeout(() => {
         if(zufallsFarbe[zufallsFarbe.length - 1] == 1){
-            rot.style.background = "red";
-            //console.log("rot gemacht")
+            rot.style.background = "red";           
             setTimeout( () => {
-                rot.style.background = "lightgray"
-                //console.log("farbe entfernt")
+                rot.style.background = "lightgray"              
             }, 700)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 2){
-            blau.style.background = "blue";
-            //console.log("blau gemacht")
+            blau.style.background = "blue";        
             setTimeout( () => {
-                blau.style.background = "lightgray"
-                //console.log("farbe entfernt")
+                blau.style.background = "lightgray"          
             }, 700)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 3){
-            gruen.style.background = "green";
-            //console.log("grün gemacht")
+            gruen.style.background = "green";           
             setTimeout( () => {
                 gruen.style.background = "lightgray"
-                //console.log("farbe entfernt")
             }, 700)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 4){
             gelb.style.background = "yellow";
-            //console.log("gelb gemacht")
             setTimeout( () => {
                 gelb.style.background = "lightgray"
-                //console.log("farbe entfernt")
             }, 700)
         }     
     }, 700);        
