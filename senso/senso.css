@@ -2,6 +2,7 @@ html, body{
     font-family: 'Roboto', sans-serif;
     background-color: #000000;
     background-image: none;
+    overflow-x: hidden;
 }
 
 .farbe{
