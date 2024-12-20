@@ -35,28 +35,28 @@ function startInterval() {
                 setTimeout( () => {
                     rot.style.background = "lightgray"
                     //console.log("farbe entfernt")
-                }, 1000)
+                }, 700)
             }else if(zufallsFarbe[loopCounter] == 2){
                 blau.style.background = "blue";
                 //console.log("blau gemacht")
                 setTimeout( () => {
                     blau.style.background = "lightgray"
                     //console.log("farbe entfernt")
-                }, 1000)
+                }, 700)
             }else if(zufallsFarbe[loopCounter] == 3){
                 gruen.style.background = "green";
-                //console.log("blau gemacht")
+                //console.log("grün gemacht")
                 setTimeout( () => {
                     gruen.style.background = "lightgray"
                     //console.log("farbe entfernt")
-                }, 1000)
+                }, 700)
             }else if(zufallsFarbe[loopCounter] == 4){
                 gelb.style.background = "yellow";
-                //console.log("blau gemacht")
+                //console.log("gelb gemacht")
                 setTimeout( () => {
                     gelb.style.background = "lightgray"
                     //console.log("farbe entfernt")
-                }, 1000)
+                }, 700)
             }
             loopCounter++;
             //console.log("noch in while schleife")
@@ -68,16 +68,29 @@ function startInterval() {
             loopCounter = 0;
         }
         //console.log("aus schleife fertig")
-    }, 2000)
+    }, 1300)
     
 }
 
-startInterval();
 
+let startButton = document.getElementById("button")
+function startGame(){
+    startButton.onclick = () => {
+        startInterval();
+        startButton.onclick = null;
+        startButton.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            startButton.style.background = "#262626"
+            startButton.innerHTML = "Spiel läuft";
+        }, 600);
+    }
+}
+startGame();
 
 
 let clickCounter = -1;
 let richtigeZuege = 0;
+let highscore = 0;
 function detectClick(){
     let kaesten = document.getElementsByClassName("farbe");
     for(let i = 0; i < kaesten.length; i++){
@@ -128,17 +141,25 @@ function auswertung(geklickteFarbe) {
             startInterval();
             clickCounter = -1;
             richtigeZuege++;
-            document.getElementById("counter").innerHTML = richtigeZuege;
+            document.getElementById("counter").innerHTML = "Richtige Spielzüge: " + richtigeZuege;
+            if(richtigeZuege > highscore){
+                highscore = richtigeZuege;
+                document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
+            }
         }
     }else{
         console.log("falsch")
         disableClick();
+        durchschnittswerte.push(richtigeZuege);
+        calcDurchschnitt();
         zufallsFarbe = [];
         erstelleZufallsFarbe();
-        startInterval();
+        //startInterval();
+        startButton.innerHTML = "Neustart";
+        startGame();
         clickCounter = -1;
         richtigeZuege = 0;
-        document.getElementById("counter").innerHTML = richtigeZuege;
+        document.getElementById("counter").innerHTML = "Richtige Spielzüge: " + richtigeZuege;
     }
 }
 
@@ -149,6 +170,19 @@ function disableClick() {
     }
 }
 
+let durchschnittswerte = [];
+let summe = 0;
+let durchschnitt = 0;
+
+function calcDurchschnitt() {
+    summe = 0;
+    for(let i = 0; i < durchschnittswerte.length; i++){
+        summe += durchschnittswerte[i];
+    }
+    durchschnitt = summe / durchschnittswerte.length;
+    durchschnitt = Math.round(durchschnitt * 100) / 100;
+    document.getElementById("mittelSpielzuege").innerHTML = "Durchschnittliche Punktzahl: " + durchschnitt;
+}
 
 
 

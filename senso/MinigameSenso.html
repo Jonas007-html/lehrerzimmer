@@ -16,13 +16,24 @@
         <div class="secondOverlay" style="height: 100vh; width: 100vw; border: 0px solid black; background: rgb(17, 17, 17); z-index: 1111"></div>
     </div>
 -->
-    <div id="game">
-        <div id="rot" class="farbe"></div>
-        <div id="blau" class="farbe"></div>
-        <div id="gruen" class="farbe"></div>
-        <div id="gelb" class="farbe"></div>
-        <div id="counter"></div>
+    <h1>Senso</h1>
+    <p>Drücke auf "Spiel Starten" um das Spiel zu beginnen. Merke dir die Reihenfolge der Farben und klicke sie dann in der gleichen Reihenfolge an.</p>
+    <div class="parent">
+        <div id="game">
+            <div id="rot" class="farbe"></div>
+            <div id="blau" class="farbe"></div>
+            <div id="gruen" class="farbe"></div>
+            <div id="gelb" class="farbe"></div>       
+        </div>
+        <div class="scoreboard">
+            <h3>Scoreboard:</h3>
+            <div id="counter">Richtige Spielzüge: 0</div>
+            <div id="rekord">Highscore: 0</div>
+            <div id="mittelSpielzuege">Duchschnittliche Punktzahl: 0</div>
+        </div>
     </div>
+    
+    <div id="button">Spiel Starten</div>
     <div class="link home" id="link" onclick="setTimeout(openHome, 1700)">
         <p> HOME <i class="fa fa-home" aria-hidden="true"></i> </p>
     </div>
