@@ -28,7 +28,7 @@ p{
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    margin-top: 15vh;
+    margin-top: 0vh;
 }
 
 #rot{

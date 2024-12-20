@@ -145,11 +145,13 @@ function auswertung(geklickteFarbe) {
             if(richtigeZuege > highscore){
                 highscore = richtigeZuege;
                 document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
+                detectOneTimeHighscore();
             }
         }
     }else{
         console.log("falsch")
         disableClick();
+        alterHighscore = highscore;
         durchschnittswerte.push(richtigeZuege);
         calcDurchschnitt();
         zufallsFarbe = [];
@@ -184,7 +186,41 @@ function calcDurchschnitt() {
     document.getElementById("mittelSpielzuege").innerHTML = "Durchschnittliche Punktzahl: " + durchschnitt;
 }
 
+let alterHighscore = highscore;
 
+function detectOneTimeHighscore() {
+    if(alterHighscore < highscore){
+        showOneTimeHighscore();
+        alterHighscore = alterHighscore + 100000000000000000000000000000000000;
+    }
+}
+document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger,Observer,ScrollToPlugin,TextPlugin, CustomEase)
+
+    gsap.set(".highscore-sign", {
+        xPercent: -100,
+    })
+    CustomEase.create("snap", "M0,0 C0.142,0.044 0.18,-0.001 0.368,0.084 0.548,0.166 0.461,0.464 0.56,0.708 0.671,0.984 0.727,0.962 1,1 ")
+
+})
+
+
+
+function showOneTimeHighscore() {
+    gsap.fromTo(".highscore-sign", {
+        xPercent: -100,
+    }, {
+        xPercent: 0,
+        duration: 1,
+        ease: "snap",
+    })
+    gsap.to(".highscore-sign", {
+        xPercent: 100,
+        duration: 1,
+        delay: 1,
+        ease: "snap",
+    })
+}
 
 
 
