@@ -20,55 +20,60 @@ console.log(zufallsFarbe)
 let loopCounter = 0;
 let loopLenght = 0;
 let computerIntervall;
+let alleFarbenDarstellen = true;
 
 function stoppComputerIntervall(){
     clearInterval(computerIntervall)
 }
 
 function startInterval() {
-   computerIntervall = setInterval( function farbenDarstellen(){
-        loopLenght++;
-        if(loopLenght <= zufallsFarbe.length){
-            if(zufallsFarbe[loopCounter] == 1){
-                rot.style.background = "red";
-                //console.log("rot gemacht")
-                setTimeout( () => {
-                    rot.style.background = "lightgray"
-                    //console.log("farbe entfernt")
-                }, 700)
-            }else if(zufallsFarbe[loopCounter] == 2){
-                blau.style.background = "blue";
-                //console.log("blau gemacht")
-                setTimeout( () => {
-                    blau.style.background = "lightgray"
-                    //console.log("farbe entfernt")
-                }, 700)
-            }else if(zufallsFarbe[loopCounter] == 3){
-                gruen.style.background = "green";
-                //console.log("grün gemacht")
-                setTimeout( () => {
-                    gruen.style.background = "lightgray"
-                    //console.log("farbe entfernt")
-                }, 700)
-            }else if(zufallsFarbe[loopCounter] == 4){
-                gelb.style.background = "yellow";
-                //console.log("gelb gemacht")
-                setTimeout( () => {
-                    gelb.style.background = "lightgray"
-                    //console.log("farbe entfernt")
-                }, 700)
-            }
-            loopCounter++;
-            //console.log("noch in while schleife")
-        }else{
-            //console.log("intervall gestoppt")
-            stoppComputerIntervall();
-            detectClick();
-            loopLenght = 0;
-            loopCounter = 0;
-        }
-        //console.log("aus schleife fertig")
-    }, 1300)
+    if(alleFarbenDarstellen == true){
+        computerIntervall = setInterval( function farbenDarstellen(){
+                loopLenght++;
+                if(loopLenght <= zufallsFarbe.length){
+                    if(zufallsFarbe[loopCounter] == 1){
+                        rot.style.background = "red";
+                        //console.log("rot gemacht")
+                        setTimeout( () => {
+                            rot.style.background = "lightgray"
+                            //console.log("farbe entfernt")
+                        }, 700)
+                    }else if(zufallsFarbe[loopCounter] == 2){
+                        blau.style.background = "blue";
+                        //console.log("blau gemacht")
+                        setTimeout( () => {
+                            blau.style.background = "lightgray"
+                            //console.log("farbe entfernt")
+                        }, 700)
+                    }else if(zufallsFarbe[loopCounter] == 3){
+                        gruen.style.background = "green";
+                        //console.log("grün gemacht")
+                        setTimeout( () => {
+                            gruen.style.background = "lightgray"
+                            //console.log("farbe entfernt")
+                        }, 700)
+                    }else if(zufallsFarbe[loopCounter] == 4){
+                        gelb.style.background = "yellow";
+                        //console.log("gelb gemacht")
+                        setTimeout( () => {
+                            gelb.style.background = "lightgray"
+                            //console.log("farbe entfernt")
+                        }, 700)
+                    }
+                    loopCounter++;
+                    //console.log("noch in while schleife")
+                }else{
+                    //console.log("intervall gestoppt")
+                    stoppComputerIntervall();
+                    detectClick();
+                    loopLenght = 0;
+                    loopCounter = 0;
+                }
+                //console.log("aus schleife fertig")
+            }, 1300)
+    }else{
+        nurLetzteFarbeZeigen();
+    }
     
 }
 
@@ -83,6 +88,7 @@ function startGame(){
             startButton.style.background = "#262626"
             startButton.innerHTML = "Spiel läuft";
         }, 600);
+        setting1Button.onclick = null;
     }
 }
 startGame();
@@ -170,6 +176,11 @@ function disableClick() {
     for (let i = 0; i < kaesten.length; i++) {
         kaesten[i].onclick = null;
     }
+    if(alleFarbenDarstellen == true){
+        activateSetting1();
+    }else{
+        disableSetting1();
+    }
 }
 
 let durchschnittswerte = [];
@@ -222,5 +233,67 @@ function showOneTimeHighscore() {
     })
 }
 
+let setting1Button = document.getElementById("setting1")
+function activateSetting1() {
+    setting1Button.onclick = () => {
+        setting1Button.onclick = null;
+        setting1Button.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            setting1Button.style.background = "#262626";
+        }, 100);  
+        setting1Button.innerHTML = "Nur letzte Farbe anzeigen: aktiviert";
+        alleFarbenDarstellen = false;
+        disableSetting1();
+    }
+}
+activateSetting1();
 
+function disableSetting1() {
+    setting1Button.onclick = () => {
+        setting1Button.onclick = null;
+        setting1Button.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            setting1Button.style.background = "#262626";
+        }, 100);  
+        setting1Button.innerHTML = "Nur letzte Farbe anzeigen: deaktiviert";
+        alleFarbenDarstellen = true;
+        activateSetting1();
+    }
+}
+
+function nurLetzteFarbeZeigen() {  
+    stoppComputerIntervall();  
+    setTimeout(() => {
+        if(zufallsFarbe[zufallsFarbe.length - 1] == 1){
+            rot.style.background = "red";
+            //console.log("rot gemacht")
+            setTimeout( () => {
+                rot.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 700)
+        }else if(zufallsFarbe[zufallsFarbe.length - 1] == 2){
+            blau.style.background = "blue";
+            //console.log("blau gemacht")
+            setTimeout( () => {
+                blau.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 700)
+        }else if(zufallsFarbe[zufallsFarbe.length - 1] == 3){
+            gruen.style.background = "green";
+            //console.log("grün gemacht")
+            setTimeout( () => {
+                gruen.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 700)
+        }else if(zufallsFarbe[zufallsFarbe.length - 1] == 4){
+            gelb.style.background = "yellow";
+            //console.log("gelb gemacht")
+            setTimeout( () => {
+                gelb.style.background = "lightgray"
+                //console.log("farbe entfernt")
+            }, 700)
+        }     
+    }, 700);        
+    detectClick();   
+}
 

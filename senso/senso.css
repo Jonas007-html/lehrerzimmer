@@ -11,6 +11,7 @@ html, body{
     background: lightgray;
     margin: 5px;
     border-radius: 30px;
+    cursor: pointer;
 }
 h1, h5{
     text-align: center;
@@ -55,7 +56,7 @@ p{
     width: 150px;
     text-align: center;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-54%);
     position: relative;
 }
 .home{
@@ -106,4 +107,17 @@ h3{
         left: 50%;
         transform: translateX(-57%);
     }
+}
+
+#setting1{
+    color: white;
+    text-align: center;
+    background: #262626;
+    padding: 10px;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
 }
