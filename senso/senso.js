@@ -78,6 +78,8 @@ function startGame(){
             startButton.innerHTML = "Spiel läuft";
         }, 600);
         setting1Button.onclick = null;
+        setting1Button.style.filter = "brightness(0.3)";
+        setting1Button.style.cursor = "not-allowed";
     }
 }
 startGame();
@@ -143,6 +145,15 @@ function auswertung(geklickteFarbe) {
     }else{
         console.log("falsch")
         disableClick();
+        if(alleFarbenDarstellen == true){
+            activateSetting1();
+            setting1Button.style.filter = "brightness(1)";
+            setting1Button.style.cursor = "pointer";
+        }else{
+            disableSetting1();
+            setting1Button.style.filter = "brightness(1)";
+            setting1Button.style.cursor = "pointer";
+        }
         alterHighscore = highscore;
         durchschnittswerte.push(richtigeZuege);
         calcDurchschnitt();
@@ -160,11 +171,6 @@ function disableClick() {
     let kaesten = document.getElementsByClassName("farbe");
     for (let i = 0; i < kaesten.length; i++) {
         kaesten[i].onclick = null;
-    }
-    if(alleFarbenDarstellen == true){
-        activateSetting1();
-    }else{
-        disableSetting1();
     }
 }
 
