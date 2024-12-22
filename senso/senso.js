@@ -75,7 +75,8 @@ function startGame(){
         startButton.style.background = "rgb(74, 74, 74)";
         setTimeout(() => {
             startButton.style.background = "#262626"
-            startButton.innerHTML = "Spiel läuft";
+            startButton.innerHTML = "Spiel stoppen";
+            stopGame();
         }, 600);
         setting1Button.onclick = null;
         setting1Button.style.filter = "brightness(0.3)";
@@ -84,10 +85,36 @@ function startGame(){
 }
 startGame();
 
+function stopGame() {
+    startButton.onclick = () => {
+        startButton.onclick = null;
+        startButton.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            startButton.style.background = "#262626"
+            startButton.innerHTML = "Spiel starten";
+            startGame();
+            callSettingFunctionBasedOnAlleFarbenDarstellen();
+            disableClick();
+            alterHighscore = highscore;
+            durchschnittswerte.push(richtigeZuege);
+            calcDurchschnitt();
+            zufallsFarbe = [];
+            erstelleZufallsFarbe();
+            clickCounter = -1;
+            richtigeZuege = 0;
+            document.getElementById("counter").innerHTML = "Richtige Spielzüge: " + richtigeZuege;
+            stoppComputerIntervall();
+            loopLenght = 0;
+            loopCounter = 0;
+            stoppNurLetzteFarbeZeigen();
+        }, 600)
+    }
+
+}
 
 let clickCounter = -1;
 let richtigeZuege = 0;
-let highscore = 0;
+let highscore = localStorage.getItem("highscore") || 0;
 function detectClick(){
     let kaesten = document.getElementsByClassName("farbe");
     for(let i = 0; i < kaesten.length; i++){
@@ -145,21 +172,13 @@ function auswertung(geklickteFarbe) {
     }else{
         console.log("falsch")
         disableClick();
-        if(alleFarbenDarstellen == true){
-            activateSetting1();
-            setting1Button.style.filter = "brightness(1)";
-            setting1Button.style.cursor = "pointer";
-        }else{
-            disableSetting1();
-            setting1Button.style.filter = "brightness(1)";
-            setting1Button.style.cursor = "pointer";
-        }
+        callSettingFunctionBasedOnAlleFarbenDarstellen();
         alterHighscore = highscore;
         durchschnittswerte.push(richtigeZuege);
         calcDurchschnitt();
         zufallsFarbe = [];
         erstelleZufallsFarbe();
-        startButton.innerHTML = "Neustart";
+        startButton.innerHTML = "Spiel starten";
         startGame();
         clickCounter = -1;
         richtigeZuege = 0;
@@ -193,6 +212,7 @@ let alterHighscore = highscore;
 function detectOneTimeHighscore() {
     if(alterHighscore < highscore){
         showOneTimeHighscore();
+        localStorage.setItem("highscore", highscore);
         alterHighscore = alterHighscore + 100000000000000000000000000000000000;
     }
 }
@@ -252,9 +272,11 @@ function disableSetting1() {
     }
 }
 
+let showLastColor
+
 function nurLetzteFarbeZeigen() {  
     stoppComputerIntervall();  
-    setTimeout(() => {
+    showLastColor  = setTimeout(() => {
         if(zufallsFarbe[zufallsFarbe.length - 1] == 1){
             rot.style.background = "red";           
             setTimeout( () => {
@@ -280,3 +302,19 @@ function nurLetzteFarbeZeigen() {
     detectClick();   
 }
 
+function stoppNurLetzteFarbeZeigen() {
+    clearTimeout(showLastColor);
+}
+
+
+function callSettingFunctionBasedOnAlleFarbenDarstellen() {
+    if(alleFarbenDarstellen == true){
+        activateSetting1();
+        setting1Button.style.filter = "brightness(1)";
+        setting1Button.style.cursor = "pointer";
+    }else{
+        disableSetting1();
+        setting1Button.style.filter = "brightness(1)";
+        setting1Button.style.cursor = "pointer";
+    }
+}
