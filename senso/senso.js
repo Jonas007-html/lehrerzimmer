@@ -35,22 +35,22 @@ function startInterval() {
                         rot.style.background = "red";
                         setTimeout( () => {
                             rot.style.background = "lightgray"
-                        }, 700)
+                        }, actualSpeedTimeout)
                     }else if(zufallsFarbe[loopCounter] == 2){
                         blau.style.background = "blue";
                         setTimeout( () => {
                             blau.style.background = "lightgray"
-                        }, 700)
+                        }, actualSpeedTimeout)
                     }else if(zufallsFarbe[loopCounter] == 3){
                         gruen.style.background = "green";
                         setTimeout( () => {
                             gruen.style.background = "lightgray"
-                        }, 700)
+                        }, actualSpeedTimeout)
                     }else if(zufallsFarbe[loopCounter] == 4){
                         gelb.style.background = "yellow";
                         setTimeout( () => {
                             gelb.style.background = "lightgray"
-                        }, 700)
+                        }, actualSpeedTimeout)
                     }
                     loopCounter++;
                 }else{
@@ -59,7 +59,7 @@ function startInterval() {
                     loopLenght = 0;
                     loopCounter = 0;
                 }
-            }, 1300)
+            }, actualSpeedIntervall)
     }else{
         nurLetzteFarbeZeigen();
     }
@@ -81,6 +81,9 @@ function startGame(){
         setting1Button.onclick = null;
         setting1Button.style.filter = "brightness(0.3)";
         setting1Button.style.cursor = "not-allowed";
+        gettingEveryTimeFaster.onclick = null;
+        gettingEveryTimeFaster.style.filter = "brightness(0.3)";
+        gettingEveryTimeFaster.style.cursor = "not-allowed";
     }
 }
 startGame();
@@ -94,6 +97,7 @@ function stopGame() {
             startButton.innerHTML = "Spiel starten";
             startGame();
             callSettingFunctionBasedOnAlleFarbenDarstellen();
+            startGettingFasterFunction();
             disableClick();
             alterHighscore = highscore;
             durchschnittswerte.push(richtigeZuege);
@@ -107,6 +111,8 @@ function stopGame() {
             loopLenght = 0;
             loopCounter = 0;
             stoppNurLetzteFarbeZeigen();
+            actualSpeedIntervall = lastClickedSpeedIntervall;
+            actualSpeedTimeout = lastClickedSpeedTimeout;
         }, 600)
     }
 
@@ -158,6 +164,7 @@ function auswertung(geklickteFarbe) {
         }
         if(clickCounter == zufallsFarbe.length - 1){
             console.log("alle abgegeben")
+            erhoeheGeschwindigkeit();
             disableClick();
             erstelleZufallsFarbe();
             console.log(zufallsFarbe)
@@ -176,6 +183,7 @@ function auswertung(geklickteFarbe) {
         console.log("falsch")
         disableClick();
         callSettingFunctionBasedOnAlleFarbenDarstellen();
+        startGettingFasterFunction();
         alterHighscore = highscore;
         durchschnittswerte.push(richtigeZuege);
         calcDurchschnitt();
@@ -186,6 +194,8 @@ function auswertung(geklickteFarbe) {
         clickCounter = -1;
         richtigeZuege = 0;
         document.getElementById("counter").innerHTML = "Richtige Spielzüge: " + richtigeZuege;
+        actualSpeedIntervall = lastClickedSpeedIntervall;
+        actualSpeedTimeout = lastClickedSpeedTimeout;
     }
 }
 
@@ -283,24 +293,24 @@ function nurLetzteFarbeZeigen() {
             rot.style.background = "red";           
             setTimeout( () => {
                 rot.style.background = "lightgray"              
-            }, 700)
+            }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 2){
             blau.style.background = "blue";        
             setTimeout( () => {
                 blau.style.background = "lightgray"          
-            }, 700)
+            }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 3){
             gruen.style.background = "green";           
             setTimeout( () => {
                 gruen.style.background = "lightgray"
-            }, 700)
+            }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 4){
             gelb.style.background = "yellow";
             setTimeout( () => {
                 gelb.style.background = "lightgray"
-            }, 700)
+            }, actualSpeedTimeout)
         }     
-    }, 700);        
+    }, actualSpeedTimeout);        
     detectClick();   
 }
 
@@ -320,3 +330,117 @@ function callSettingFunctionBasedOnAlleFarbenDarstellen() {
         setting1Button.style.cursor = "pointer";
     }
 }
+
+
+
+let defaultSpeedIntervall = 1300
+let defaultSpeedTimeout = 700
+
+let slowSpeedIntervall = 2000
+let slowSpeedTimeout = 1000
+
+let fastSpeedIntervall = 1000
+let fastSpeedTimeout = 500
+
+let actualSpeedIntervall = defaultSpeedIntervall
+let actualSpeedTimeout = defaultSpeedTimeout
+
+let lastClickedSpeedIntervall = defaultSpeedIntervall
+let lastClickedSpeedTimeout = defaultSpeedTimeout
+
+
+let normal = document.getElementById("normal")
+function defaultSpeed() {
+    actualSpeedIntervall = defaultSpeedIntervall
+    actualSpeedTimeout = defaultSpeedTimeout
+
+    lastClickedSpeedIntervall = defaultSpeedIntervall
+    lastClickedSpeedTimeout = defaultSpeedTimeout
+    normal.style.background = "rgb(74, 74, 74)";
+    setTimeout(() => {
+        normal.style.background = "#262626"
+    }, 100)
+}
+normal.addEventListener("click", defaultSpeed)
+
+let langsam = document.getElementById("langsam")
+function slowSpeed() {
+    actualSpeedIntervall = slowSpeedIntervall
+    actualSpeedTimeout = slowSpeedTimeout
+
+    lastClickedSpeedIntervall = slowSpeedIntervall
+    lastClickedSpeedTimeout = slowSpeedTimeout
+    langsam.style.background = "rgb(74, 74, 74)";
+    setTimeout(() => {
+        langsam.style.background = "#262626"
+    }, 100)
+}
+langsam.addEventListener("click", slowSpeed)    
+
+let schnell = document.getElementById("schnell")
+function fastSpeed() {
+    actualSpeedIntervall = fastSpeedIntervall
+    actualSpeedTimeout = fastSpeedTimeout
+
+    lastClickedSpeedIntervall = fastSpeedIntervall
+    lastClickedSpeedTimeout = fastSpeedTimeout
+    schnell.style.background = "rgb(74, 74, 74)";
+    setTimeout(() => {
+        schnell.style.background = "#262626"
+    }, 100)
+}
+schnell.addEventListener("click", fastSpeed)
+
+let gettingEveryTimeFaster = document.getElementById("gettingFaster")
+let isGettingFaster = true;
+
+function startGettingFasterFunction() {
+    if(isGettingFaster = true){
+        gettingNotFaster();
+        gettingEveryTimeFaster.style.filter = "brightness(1)";
+        gettingEveryTimeFaster.style.cursor = "pointer";
+    }else{
+        gettingFaster();
+        gettingEveryTimeFaster.style.filter = "brightness(1)";
+        gettingEveryTimeFaster.style.cursor = "pointer";
+    }
+}
+startGettingFasterFunction();
+
+function gettingNotFaster() {
+    isGettingFaster = false
+    gettingEveryTimeFaster.onclick = () => {
+        gettingEveryTimeFaster.onclick = null;
+        gettingEveryTimeFaster.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            gettingEveryTimeFaster.style.background = "#262626"
+        }, 100)
+        gettingEveryTimeFaster.innerHTML = "Mit jeder Runde schneller werden: Aus"
+        gettingFaster();
+    }
+}
+
+function gettingFaster() {
+    isGettingFaster = true;
+    gettingEveryTimeFaster.onclick = () => {
+        gettingEveryTimeFaster.onclick = null;
+        gettingEveryTimeFaster.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            gettingEveryTimeFaster.style.background = "#262626"
+        }, 100)
+        gettingEveryTimeFaster.innerHTML = "Mit jeder Runde schneller werden: An"
+        gettingNotFaster();
+    }
+}
+
+function erhoeheGeschwindigkeit() {
+    if(isGettingFaster = true){
+        if(actualSpeedIntervall > 800){
+            actualSpeedIntervall = actualSpeedIntervall - 70
+        }
+        if(actualSpeedTimeout > 400){
+        actualSpeedTimeout = actualSpeedTimeout - 70
+        }
+    }
+}
+    

@@ -47,7 +47,8 @@ p{
 }
 
 #button{
-    margin: 10px;
+    margin-top: 10px;    
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
     background-color: #262626;
@@ -56,7 +57,7 @@ p{
     width: 150px;
     text-align: center;
     left: 50%;
-    transform: translateX(-54%);
+    transform: translateX(-50%);
     position: relative;
 }
 .home{
@@ -91,7 +92,9 @@ h3{
     top: 38vh;
     padding: 10px;
     background: gray;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     border-radius: 10px;
 }
 .parent{
@@ -103,9 +106,10 @@ h3{
 @media screen and (max-width: 750px) {
     .scoreboard{
         position: relative !important;
+        margin-left: 0;
         top: 0;
         left: 50%;
-        transform: translateX(-57%);
+        transform: translateX(-50%);
     }
 }
 
@@ -120,4 +124,40 @@ h3{
     position: relative;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.geschwindigkeit{
+    color: white;
+    width: 80vw;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    background: hsl(0, 0%, 66%);
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 80px;
+}
+#langsam, #normal, #schnell, #gettingFaster{
+    color: white;
+    text-align: center;
+    background: #262626;
+    padding: 10px;
+    width: fit-content;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    height: fit-content;
+}
+#gettingFaster{
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+.options{
+    display: flex;
+    justify-content: center;
 }
