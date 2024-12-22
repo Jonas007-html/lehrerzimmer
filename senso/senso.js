@@ -115,6 +115,8 @@ function stopGame() {
 let clickCounter = -1;
 let richtigeZuege = 0;
 let highscore = localStorage.getItem("highscore") || 0;
+document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
+
 function detectClick(){
     let kaesten = document.getElementsByClassName("farbe");
     for(let i = 0; i < kaesten.length; i++){
@@ -167,6 +169,7 @@ function auswertung(geklickteFarbe) {
                 highscore = richtigeZuege;
                 document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
                 detectOneTimeHighscore();
+                localStorage.setItem("highscore", highscore);
             }
         }
     }else{
@@ -212,7 +215,6 @@ let alterHighscore = highscore;
 function detectOneTimeHighscore() {
     if(alterHighscore < highscore){
         showOneTimeHighscore();
-        localStorage.setItem("highscore", highscore);
         alterHighscore = alterHighscore + 100000000000000000000000000000000000;
     }
 }
