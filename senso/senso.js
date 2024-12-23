@@ -548,7 +548,7 @@ function saveHighscoreToRanking() {
 
     alert("Dein Highscore wurde gespeichert!");
 }
-
+/*
 if (richtigeZuege > highscore) {
     highscore = richtigeZuege;
     document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
@@ -556,4 +556,9 @@ if (richtigeZuege > highscore) {
     detectOneTimeHighscore();
     saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert
 }
+*/
+//kopier nicht meinen code weil der wird sonst mehrfach ausgeführt was zu bugs führen kann
+// deine funktion wird immer dann ausgeführt wenn alle farben angklickt wurden und der aktuelle score höher als der bisherige highscore ist 
+// somit brauch es den unteren Abschnitt den ich ausgeklammert habe gar nicht
+// wenn du willst kann ich ein higscore zurücksetzen button einbauen damit du es leichter testen kannst (schreib es eif hier her oder auf whatsapp)
 // ende highscore speichern und übertragen
