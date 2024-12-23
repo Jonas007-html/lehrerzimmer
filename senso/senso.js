@@ -180,6 +180,10 @@ function auswertung(geklickteFarbe) {
                 document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
                 detectOneTimeHighscore();
                 localStorage.setItem("highscore", highscore);
+
+                detectOneTimeHighscore();
+    saveHighscoreToRanking(); 
+    
             }
         }
     }else{
@@ -525,3 +529,32 @@ function hilfeSperren() {
 }
 hilfeSperren();
 
+
+    
+
+function saveHighscoreToRanking() {
+    const name = prompt("Bitte gib deinen Namen ein:");
+    const klasse = prompt("Bitte gib deine Klasse ein:");
+    const score = highscore; // Highscore wird aus deinem Spielcode übernommen
+
+    if (!name || !klasse) {
+        alert("Name und Klasse dürfen nicht leer sein!");
+        return;
+    }
+
+    const player = { name, klasse, score };
+    let rankings = JSON.parse(localStorage.getItem("rankings")) || [];
+    rankings.push(player);
+    rankings.sort((a, b) => b.score - a.score); // Sortiert nach Highscore (höchster zuerst)
+    localStorage.setItem("rankings", JSON.stringify(rankings));
+
+    alert("Dein Highscore wurde gespeichert!");
+}
+
+if (richtigeZuege > highscore) {
+    highscore = richtigeZuege;
+    document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
+    localStorage.setItem("highscore", highscore);
+    detectOneTimeHighscore();
+    saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert
+}

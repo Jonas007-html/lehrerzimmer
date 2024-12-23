@@ -1,4 +1,4 @@
-function saveScore() {
+/*function saveScore() {
     const name = document.getElementById("name").value;
     const klasse = document.getElementById("klasse").value;
     const score = parseInt(document.getElementById("score").value);
@@ -40,3 +40,84 @@ function resetRankings() {
     alert(" Rankings zurückgesetzt");
     displayRankings();
 }
+
+
+function resetRankings() {
+    if (confirm("Möchtest du wirklich alle Rankings zurücksetzen?")) {
+        localStorage.removeItem("rankings");
+        displayRankings(); // Aktualisiert die Tabelle
+        alert("Alle Rankings wurden zurückgesetzt!");
+    }
+}
+
+
+function displayRankings() {
+    const rankings = JSON.parse(localStorage.getItem("rankings")) || [];
+    const rankingTableBody = document.querySelector("#ranking-table tbody");
+
+    rankingTableBody.innerHTML = ""; // Löscht vorherige Einträge
+
+    rankings.forEach((player, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${player.name}</td>
+            <td>${player.klasse}</td>
+            <td>${player.score}</td>
+        `;
+        rankingTableBody.appendChild(row);
+    });
+}
+
+window.onload = displayRankings;
+*/
+
+const saveScore = () => {
+    const name = document.getElementById('name').value.trim();
+    const klasse = document.getElementById('klasse').value.trim();
+    const score = document.getElementById('score').value.trim();
+
+    if (!name || !klasse || !score) {
+        alert('Bitte fülle alle Felder aus!');
+        return;
+    }
+
+    const rankings = JSON.parse(localStorage.getItem('rankings')) || [];
+
+    rankings.push({ name, klasse, score: parseInt(score, 10) });
+
+    rankings.sort((a, b) => a.score - b.score);
+
+    localStorage.setItem('rankings', JSON.stringify(rankings));
+
+    displayRankings();
+};
+
+const displayRankings = () => {
+    const rankings = JSON.parse(localStorage.getItem('rankings')) || [];
+    const tbody = document.querySelector('#ranking-table tbody');
+
+    tbody.innerHTML = '';
+
+    rankings.forEach((entry) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${entry.name}</td>
+            <td>${entry.klasse}</td>
+            <td>${entry.score}</td>
+        `;
+        tbody.appendChild(row);
+    });
+};
+
+const resetRankings = () => {
+    if (confirm('Möchtest du wirklich alle Rankings löschen?')) {
+        localStorage.removeItem('rankings');
+        displayRankings();
+    }
+};
+
+window.onload = displayRankings;
+
+const openHome = () => {
+    window.location.href = '/home';
+};
