@@ -28,6 +28,7 @@ function stoppComputerIntervall(){
 
 function startInterval() {
     if(alleFarbenDarstellen == true){
+        hilfeSperren();
         computerIntervall = setInterval( function farbenDarstellen(){
                 loopLenght++;
                 if(loopLenght <= zufallsFarbe.length){
@@ -56,6 +57,7 @@ function startInterval() {
                 }else{
                     stoppComputerIntervall();
                     detectClick();
+                    hilfeAnfordern();
                     loopLenght = 0;
                     loopCounter = 0;
                 }
@@ -113,6 +115,7 @@ function stopGame() {
             stoppNurLetzteFarbeZeigen();
             actualSpeedIntervall = lastClickedSpeedIntervall;
             actualSpeedTimeout = lastClickedSpeedTimeout;
+            hilfeSperren();
         }, 600)
     }
 
@@ -196,6 +199,35 @@ function auswertung(geklickteFarbe) {
         document.getElementById("counter").innerHTML = "Richtige Spielzüge: " + richtigeZuege;
         actualSpeedIntervall = lastClickedSpeedIntervall;
         actualSpeedTimeout = lastClickedSpeedTimeout;
+        hilfeSperren();
+        falscheFarbeGeklickt(geklickteFarbe);
+    }
+}
+
+function falscheFarbeGeklickt(geklickteFarbe) {
+    if(geklickteFarbe == "rot"){
+    rot.classList.add("wrong-card");
+    setTimeout(() => {
+        clickedElement.classList.remove("wrong-card");
+    }, 500);
+    }
+    if(geklickteFarbe == "blau"){
+        blau.classList.add("wrong-card");
+        setTimeout(() => {
+            clickedElement.classList.remove("wrong-card");
+        }, 500);
+    }
+    if(geklickteFarbe == "gruen"){
+        gruen.classList.add("wrong-card");
+        setTimeout(() => {
+            clickedElement.classList.remove("wrong-card");
+        }, 500);
+    }
+    if(geklickteFarbe == "gelb"){
+        gelb.classList.add("wrong-card");
+        setTimeout(() => {
+            clickedElement.classList.remove("wrong-card");
+        }, 500);
     }
 }
 
@@ -288,34 +320,40 @@ let showLastColor
 
 function nurLetzteFarbeZeigen() {  
     stoppComputerIntervall();  
+    hilfeSperren();
     showLastColor  = setTimeout(() => {
         if(zufallsFarbe[zufallsFarbe.length - 1] == 1){
             rot.style.background = "red";           
             setTimeout( () => {
-                rot.style.background = "lightgray"              
+                rot.style.background = "lightgray"  
+                hilfeAnfordern();             
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 2){
             blau.style.background = "blue";        
             setTimeout( () => {
-                blau.style.background = "lightgray"          
+                blau.style.background = "lightgray"  
+                hilfeAnfordern();         
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 3){
             gruen.style.background = "green";           
             setTimeout( () => {
                 gruen.style.background = "lightgray"
+                hilfeAnfordern(); 
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 4){
             gelb.style.background = "yellow";
             setTimeout( () => {
                 gelb.style.background = "lightgray"
+                hilfeAnfordern(); 
             }, actualSpeedTimeout)
         }     
-    }, actualSpeedTimeout);        
-    detectClick();   
+    }, actualSpeedIntervall);        
+    detectClick();  
 }
 
 function stoppNurLetzteFarbeZeigen() {
     clearTimeout(showLastColor);
+    hilfeSperren();
 }
 
 
@@ -443,4 +481,47 @@ function erhoeheGeschwindigkeit() {
         }
     }
 }
-    
+
+
+//// Hilfe anfordern wenn auf eine birne geklickt wird
+
+// anzeigenDerHilfe
+let hilfeButton = document.getElementById("hilfe")
+
+function hilfeAnfordern() {
+    hilfeButton.style.filter = "brightness(1)";
+    hilfeButton.style.cursor = "pointer";
+    hilfeButton.onclick = () => {
+        //hilfeButton.onclick = null;
+        hilfeButton.style.background = "rgb(74, 74, 74)";
+        setTimeout(() => {
+            hilfeButton.style.background = "#262626"
+        }, 100)
+        if(zufallsFarbe[clickCounter + 1] == 1){
+            rot.classList.add("anzeigenDerHilfe")
+        }
+        if(zufallsFarbe[clickCounter + 1] == 2){
+            blau.classList.add("anzeigenDerHilfe")
+        }
+        if(zufallsFarbe[clickCounter + 1] == 3){
+            gruen.classList.add("anzeigenDerHilfe")
+        }
+        if(zufallsFarbe[clickCounter + 1] == 4){
+            gelb.classList.add("anzeigenDerHilfe")
+        }
+        setTimeout(() =>{
+            rot.classList.remove("anzeigenDerHilfe")
+            blau.classList.remove("anzeigenDerHilfe")
+            gruen.classList.remove("anzeigenDerHilfe")
+            gelb.classList.remove("anzeigenDerHilfe")
+        }, 500)
+    }
+}
+
+function hilfeSperren() {
+    hilfeButton.onclick = null;
+    hilfeButton.style.filter = "brightness(0.3)";
+    hilfeButton.style.cursor = "not-allowed";
+}
+hilfeSperren();
+
