@@ -180,10 +180,8 @@ function auswertung(geklickteFarbe) {
                 document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
                 detectOneTimeHighscore();
                 localStorage.setItem("highscore", highscore);
-
                 detectOneTimeHighscore();
-    saveHighscoreToRanking(); 
-    
+                saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
             }
         }
     }else{
@@ -487,7 +485,7 @@ function erhoeheGeschwindigkeit() {
 }
 
 
-//// Hilfe anfordern wenn auf eine birne geklickt wird
+// Hilfe anfordern wenn auf eine birne geklickt wird
 
 // anzeigenDerHilfe
 let hilfeButton = document.getElementById("hilfe")
@@ -531,7 +529,7 @@ hilfeSperren();
 
 
     
-
+// highscore speichern und übertragen
 function saveHighscoreToRanking() {
     const name = prompt("Bitte gib deinen Namen ein:");
     const klasse = prompt("Bitte gib deine Klasse ein:");
@@ -558,3 +556,4 @@ if (richtigeZuege > highscore) {
     detectOneTimeHighscore();
     saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert
 }
+// ende highscore speichern und übertragen
