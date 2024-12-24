@@ -7,18 +7,13 @@
     <title>Ranking-System</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <style>
-
-body {
-    background-image: url(/lehrerzimmer/general/bilder/mc\ back.jpg);
-}
+        body {
+            background-image: url(/lehrerzimmer/general/bilder/mc\ back.jpg);
+        }
     </style>
 </head>
-
 <body>
- 
-
     <header>
         <h1>Bestenliste der Minispiele</h1>
     </header>
@@ -51,16 +46,20 @@ body {
             </tbody>
         </table>
     </div>
-    <div class="buttonreset"> <button onclick="resetRankings()">Rankings zurücksetzen</button> 
+    <div class="buttonreset">
+        <button onclick="resetRankings()">Rankings zurücksetzen</button> 
     </div>
 
-<!-- Css / Java nicht verlink, kannst du dich drum kümmern bitte -->
     <div class="link home" id="link" onclick="setTimeout(openHome, 1700)">
-        <p> HOME <i class="fa fa-home" aria-hidden="true"></i> </p>
+        <p>HOME <i class="fa fa-home" aria-hidden="true"></i></p>
     </div>
-        <script src="/lehrerzimmer/general/js/GSAPanimations.js"></script>
-
-
+    
+    <script src="/lehrerzimmer/general/js/GSAPanimations.js"></script>
     <script src="script1.js"></script>
+    <script>
+        function openHome() {
+            window.location.href = "index.html"; // Stellen Sie sicher, dass der Pfad korrekt ist
+        }
+    </script>
 </body>
 </html>

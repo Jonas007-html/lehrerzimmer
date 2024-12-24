@@ -4,7 +4,7 @@ function saveScore() {
     const score = parseInt(document.getElementById("score").value);
 
     if (!name || !klasse || !score || isNaN(score)) {
-        alert("Bitte allee Felder ausfüllen!");
+        alert("Bitte alle Felder ausfüllen!");
         return;
     }
 
@@ -31,12 +31,11 @@ function displayRankings() {
         row.insertCell(2).textContent = player.score + " Sekunden";
     });
 }
-window.onload = displayRankings;
-
-
 
 function resetRankings() {
     localStorage.clear();
-    alert(" Rankings zurückgesetzt");
+    alert("Rankings zurückgesetzt!");
     displayRankings();
 }
+
+window.onload = displayRankings;
