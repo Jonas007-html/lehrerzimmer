@@ -116,6 +116,9 @@ function stopGame() {
             actualSpeedIntervall = lastClickedSpeedIntervall;
             actualSpeedTimeout = lastClickedSpeedTimeout;
             hilfeSperren();
+            hilfeAnzahl = 2
+            hilfeAnzahlErhoehen = true;
+            hilfeButton.innerHTML = "<i class='fa fa-lightbulb-o' aria-hidden='true'></i> " + hilfeAnzahl + " Hilfe"    
         }, 600)
     }
 
@@ -132,6 +135,11 @@ function detectClick(){
         kaesten[i].onclick = () => {
             console.log("geklickt")
             clickCounter++;
+            if(clickCounter == 9 && hilfeAnzahlErhoehen == true){
+                hilfeAnzahl = hilfeAnzahl + 2;
+                hilfeButton.innerHTML = "<i class='fa fa-lightbulb-o' aria-hidden='true'></i> " + hilfeAnzahl + " Hilfe"        
+                hilfeAnzahlErhoehen = false;
+            }
             let geklickteFarbe = kaesten[i].getAttribute("id");
             auswertung(geklickteFarbe);
         }
@@ -203,6 +211,9 @@ function auswertung(geklickteFarbe) {
         actualSpeedTimeout = lastClickedSpeedTimeout;
         hilfeSperren();
         falscheFarbeGeklickt(geklickteFarbe);
+        hilfeAnzahl = 2
+        hilfeAnzahlErhoehen = true;
+        hilfeButton.innerHTML = "<i class='fa fa-lightbulb-o' aria-hidden='true'></i> " + hilfeAnzahl + " Hilfe"
     }
 }
 
@@ -489,6 +500,16 @@ function erhoeheGeschwindigkeit() {
 
 // anzeigenDerHilfe
 let hilfeButton = document.getElementById("hilfe")
+let hilfeAnzahl = 2;
+let hilfeAnzahlErhoehen = true;
+
+function countHilfe() {
+    hilfeAnzahl--;
+    if(hilfeAnzahl == 0){
+        hilfeSperren();
+    }
+    hilfeButton.innerHTML = "<i class='fa fa-lightbulb-o' aria-hidden='true'></i> " + hilfeAnzahl + " Hilfe"
+}
 
 function hilfeAnfordern() {
     hilfeButton.style.filter = "brightness(1)";
@@ -517,7 +538,9 @@ function hilfeAnfordern() {
             gruen.classList.remove("anzeigenDerHilfe")
             gelb.classList.remove("anzeigenDerHilfe")
         }, 500)
+        countHilfe();
     }
+    
 }
 
 function hilfeSperren() {
