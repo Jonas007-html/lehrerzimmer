@@ -57,7 +57,9 @@ function startInterval() {
                 }else{
                     stoppComputerIntervall();
                     detectClick();
-                    hilfeAnfordern();
+                    if(hilfeAnzahl > 0){
+                        hilfeAnfordern();
+                    }
                     loopLenght = 0;
                     loopCounter = 0;
                 }
@@ -339,25 +341,33 @@ function nurLetzteFarbeZeigen() {
             rot.style.background = "red";           
             setTimeout( () => {
                 rot.style.background = "lightgray"  
-                hilfeAnfordern();             
+                if(hilfeAnzahl > 0){
+                    hilfeAnfordern();
+                }            
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 2){
             blau.style.background = "blue";        
             setTimeout( () => {
                 blau.style.background = "lightgray"  
-                hilfeAnfordern();         
+                if(hilfeAnzahl > 0){
+                    hilfeAnfordern();
+                }        
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 3){
             gruen.style.background = "green";           
             setTimeout( () => {
                 gruen.style.background = "lightgray"
-                hilfeAnfordern(); 
+                if(hilfeAnzahl > 0){
+                    hilfeAnfordern();
+                } 
             }, actualSpeedTimeout)
         }else if(zufallsFarbe[zufallsFarbe.length - 1] == 4){
             gelb.style.background = "yellow";
             setTimeout( () => {
                 gelb.style.background = "lightgray"
-                hilfeAnfordern(); 
+                if(hilfeAnzahl > 0){
+                    hilfeAnfordern();
+                }
             }, actualSpeedTimeout)
         }     
     }, actualSpeedIntervall);        
