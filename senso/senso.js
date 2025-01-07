@@ -100,6 +100,9 @@ function stopGame() {
             startButton.style.background = "#262626"
             startButton.innerHTML = "Spiel starten";
             startGame();
+            if(richtigeZuege >= highscore){
+                saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
+            }
             callSettingFunctionBasedOnAlleFarbenDarstellen();
             startGettingFasterFunction();
             disableClick();
@@ -191,12 +194,14 @@ function auswertung(geklickteFarbe) {
                 detectOneTimeHighscore();
                 localStorage.setItem("highscore", highscore);
                 detectOneTimeHighscore();
-                saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
             }
         }
     }else{
         console.log("falsch")
         disableClick();
+        if(richtigeZuege >= highscore){
+            saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
+        }
         callSettingFunctionBasedOnAlleFarbenDarstellen();
         startGettingFasterFunction();
         alterHighscore = highscore;
