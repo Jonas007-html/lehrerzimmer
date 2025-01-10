@@ -664,7 +664,7 @@ async function datenBekommen() {
 
 async function tenthScoreCalc(bestscore) {    
     if(bestscore.length < 10){
-        tenthScore = bestscore[bestscore.length - 1].score   
+        tenthScore = 0   
     }else{
         tenthScore = bestscore[9].score  
     }

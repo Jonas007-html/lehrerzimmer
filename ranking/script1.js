@@ -66,6 +66,7 @@ row.insertCell(1).textContent = player.klasse;
 row.insertCell(2).textContent = player.score + " Sekunden";
 }
 */
+/*
 rankings.map(player => {
 const row = tableBody.insertRow();
 row.insertCell(0).textContent = player.SuSname;
@@ -73,6 +74,20 @@ row.insertCell(1).textContent = player.klasse;
 row.insertCell(2).textContent = player.score + " Züge";
 });
 }
+*/
+let anzahlAnzeigen = 0
+if(rankings.length <= 10){
+  anzahlAnzeigen = rankings.length
+}else{
+  anzahlAnzeigen = 10
+}
 
+for(let i = 0; i < anzahlAnzeigen; i++){
+  const row = tableBody.insertRow();
+  row.insertCell(0).textContent = rankings[i].SuSname;
+  row.insertCell(1).textContent = rankings[i].klasse;
+  row.insertCell(2).textContent = rankings[i].score + " Züge";
+}
+}
 // Beim Laden der Seite die Rankings anzeigen
 window.onload = displayRankings;
