@@ -566,7 +566,7 @@ function hilfeSperren() {
 hilfeSperren();
 
 
-    
+ /*   
 // highscore speichern und übertragen
 function saveHighscoreToRanking() {
     const name = prompt("Bitte gib deinen Namen ein:");
@@ -586,6 +586,7 @@ function saveHighscoreToRanking() {
 
     alert("Dein Highscore wurde gespeichert!");
 }
+*/
 /*
 if (richtigeZuege > highscore) {
     highscore = richtigeZuege;
@@ -600,3 +601,32 @@ if (richtigeZuege > highscore) {
 // somit brauch es den unteren Abschnitt den ich ausgeklammert habe gar nicht
 // wenn du willst kann ich ein higscore zurücksetzen button einbauen damit du es leichter testen kannst (schreib es eif hier her oder auf whatsapp)
 // ende highscore speichern und übertragen
+
+function saveHighscoreToRanking() {
+    const name = prompt("Bitte gib deinen Namen ein:");
+    const klasse = prompt("Bitte gib deine Klasse ein:");
+    const score = highscore; // Highscore wird aus deinem Spielcode übernommen
+
+    if (!name || !klasse) {
+        alert("Name und Klasse dürfen nicht leer sein!");
+        return;
+    }
+
+    const player = { name, klasse, score };
+
+    fetch('/../workspace/games/01_memory/v0.1/srv/save_higscore.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(player)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Fehler beim Speichern des Highscores');
+    });
+}
