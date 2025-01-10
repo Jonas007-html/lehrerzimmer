@@ -19,7 +19,7 @@ alert("Bitte alle Felder ausfüllen!");
 return;
 }
 
-const player = { name, klasse, score };
+const player = { SuSname, klasse, score };
 
 // Holen der aktuellen Liste der Rankings aus dem LocalStorage oder initialisieren mit einem leeren Array
 //let rankings = JSON.parse(localStorage.getItem("rankings")) || [];
@@ -68,7 +68,7 @@ row.insertCell(2).textContent = player.score + " Sekunden";
 */
 rankings.map(player => {
 const row = tableBody.insertRow();
-row.insertCell(0).textContent = player.name;
+row.insertCell(0).textContent = player.SuSname;
 row.insertCell(1).textContent = player.klasse;
 row.insertCell(2).textContent = player.score + " Züge";
 });

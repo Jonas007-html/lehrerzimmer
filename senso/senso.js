@@ -100,7 +100,7 @@ function stopGame() {
             startButton.style.background = "#262626"
             startButton.innerHTML = "Spiel starten";
             startGame();
-            if(richtigeZuege >= highscore){
+            if(richtigeZuege >= tenthScore){
                 saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
             }
             callSettingFunctionBasedOnAlleFarbenDarstellen();
@@ -131,8 +131,8 @@ function stopGame() {
 
 let clickCounter = -1;
 let richtigeZuege = 0;
-let highscore = localStorage.getItem("highscore") || 0;
-document.getElementById("rekord").innerHTML = "Highscore: " + highscore;
+let highscore =  0 //localStorage.getItem("highscore") || 0;
+document.getElementById("rekord").innerHTML = "persönlicher Highscore: " + highscore;
 
 function detectClick(){
     let kaesten = document.getElementsByClassName("farbe");
@@ -199,7 +199,7 @@ function auswertung(geklickteFarbe) {
     }else{
         console.log("falsch")
         disableClick();
-        if(richtigeZuege >= highscore){
+        if(richtigeZuege >= tenthScore){
             saveHighscoreToRanking(); // Neuer Highscore wird zur Ranking-Seite gespeichert    
         }
         callSettingFunctionBasedOnAlleFarbenDarstellen();
@@ -601,18 +601,35 @@ if (richtigeZuege > highscore) {
 // somit brauch es den unteren Abschnitt den ich ausgeklammert habe gar nicht
 // wenn du willst kann ich ein higscore zurücksetzen button einbauen damit du es leichter testen kannst (schreib es eif hier her oder auf whatsapp)
 // ende highscore speichern und übertragen
+let SuSname = "";
+let klasse = "";
+let inputWindow = document.getElementById("inputWindow")
+async function werteEingeben(){
+    return new Promise((eingegeben) => {
+        inputWindow.style.zIndex = "1000000"
+        document.getElementById("abschicken").onclick = () => {
+        SuSname = document.getElementById("name").value;
+        klasse = document.getElementById("klasse").value;
+        eingegeben()
+        inputWindow.style.zIndex = "-1000000"
+        }
+    })
+}
 
-function saveHighscoreToRanking() {
+async function saveHighscoreToRanking() {
+    /*
     const name = prompt("Bitte gib deinen Namen ein:");
     const klasse = prompt("Bitte gib deine Klasse ein:");
+    */
+    await werteEingeben();
     const score = highscore; // Highscore wird aus deinem Spielcode übernommen
 
-    if (!name || !klasse) {
+    if (!SuSname || !klasse) {
         alert("Name und Klasse dürfen nicht leer sein!");
         return;
     }
 
-    const player = { name, klasse, score };
+    const player = { SuSname, klasse, score };
 
     fetch('/../workspace/games/01_memory/v0.1/srv/save_higscore.php', {
         method: 'POST',
@@ -630,3 +647,38 @@ function saveHighscoreToRanking() {
         alert('Fehler beim Speichern des Highscores');
     });
 }
+
+async function getDaten(file) {
+    let daten = await fetch(file);
+    let datenjson = await daten.json();
+    console.log(datenjson)
+    return datenjson;
+}
+
+let tenthScore = 0;
+
+async function datenBekommen() {
+    let bestscore = await getDaten("/../workspace/games/01_memory/v0.1/srv/highscore.json") || [];
+    return bestscore;
+}
+
+async function tenthScoreCalc(bestscore) {    
+    if(bestscore.length < 10){
+        tenthScore = bestscore[bestscore.length - 1].score   
+    }else{
+        tenthScore = bestscore[9].score  
+    }
+    console.log(tenthScore)
+    
+}
+
+async function bestScoreEver(bestscore) {
+    document.getElementById("bestScore").innerHTML = "Bester Highscore jemals: " + bestscore[0].score;
+}
+
+async function executeBestScoreEver() {
+    let bestscore = await datenBekommen();
+    await tenthScoreCalc(bestscore);
+    await bestScoreEver()
+}
+executeBestScoreEver(bestscore);

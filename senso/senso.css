@@ -199,3 +199,33 @@ h3{
 .wrong-card {
     animation: skew-x-shake 1s;
 }
+.nameInputWindow{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1000000;
+}
+.nameInputWindow h3{
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.button{
+    padding: 7px;
+    border-radius: 10px;
+    border: none;
+    background: #262626;
+    margin-top: 10px;
+}
+.block{
+    text-align: left;
+    margin: 5px;
+}

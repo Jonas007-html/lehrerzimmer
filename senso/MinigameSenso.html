@@ -30,6 +30,7 @@
             <h3>Scoreboard:</h3>
             <div id="counter">Richtige Spielzüge: 0</div>
             <div id="rekord"></div>
+            <div id="bestScore"></div>
             <div id="mittelSpielzuege">Durchschnittliche Punktzahl: 0</div>
         </div>
     </div>
@@ -48,6 +49,20 @@
     <div class="link home" id="link" onclick="setTimeout(openHome, 1700)">
         <p> HOME <i class="fa fa-home" aria-hidden="true"></i> </p>
     </div>
+    <div class="nameInputWindow" id="inputWindow">
+        <h3>Herzlichen Glückwunsch! <br> Du hast es unter die top 10 Spieler geschafft!</h3>
+        
+        <div class="block">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Dein Name" required>
+        </div>        
+        <div class="block">
+            <label for="klasse">Klasse:</label>
+            <input type="text" id="klasse" placeholder="Deine Klasse" required>
+        </div>
+        
+        <div class="button" id="abschicken">Abschicken</div>
+	</div>
     <script src="senso.js"></script>
     <script src="/lehrerzimmer/general/js/GSAPanimations.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
