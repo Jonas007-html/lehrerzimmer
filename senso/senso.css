@@ -229,3 +229,17 @@ h3{
     text-align: left;
     margin: 5px;
 }
+.link{
+    display: block;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.link a{
+    color: white;
+    text-decoration: none;
+    background: #262626;
+    padding: 7px;
+    border-radius: 10px;
+}
