@@ -606,7 +606,7 @@ let klasse = "";
 let inputWindow = document.getElementById("inputWindow")
 async function werteEingeben(){
     return new Promise((eingegeben) => {
-        inputWindow.style.zIndex = "1000000"
+        inputWindow.style.display = "flex"
         document.getElementById("abschicken").onclick = () => {
         SuSname = document.getElementById("name").value;
         klasse = document.getElementById("klasse").value;

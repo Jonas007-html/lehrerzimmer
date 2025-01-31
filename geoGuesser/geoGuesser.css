@@ -1,0 +1,19 @@
+html, body{
+    margin: 0px;
+    padding: 0px;;
+}
+#bild{
+    margin-left: 100px;
+    margin-right: 99px;
+    padding-top: 12px;
+}
+#bildVonKarte{
+    /*###### !!!!!!! WICHTIG !!!!!!! ######*/
+    /*###### KEIN Padding oder Margin hinzufügen ######*/
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.dot{
+    position: absolute;
+}
+

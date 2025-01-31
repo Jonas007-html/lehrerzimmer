@@ -207,11 +207,10 @@ h3{
     height: 100vh;
     background: rgba(0, 0, 0, 1);
     color: white;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: -1000000;
 }
 .nameInputWindow h3{
     text-align: center;
@@ -243,3 +242,4 @@ h3{
     padding: 7px;
     border-radius: 10px;
 }
+
