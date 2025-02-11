@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geo Guesser</title>
     <link rel="stylesheet" href="../geoGuesser/geoGuesser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="bild">
-        <img src="../general/bilder/finalLogo.png" alt="" id="bildVonKarte">
-    </div>
-    <div id="position"></div>
+    <div id="geoGuesser">
+        <div id="geoGuesserInfo">
+            <h1>Geo Guesser - NBS Edition</h1>
+            <h4>So Funktioniert's:</h4>
+            <p>Es werden von jedem Standort 3 Bilder gezeigt, die beliebig oft angeschaut werden können. Jedoch muss innerhalb 1 Minute auf der Karte rechts unten ein Tipp abgegeben werden welcher Standort gesucht wird. <br> Natürlich gilt: Desto näher man seinen Standort am Zielpunkt setzt, desto mehr Punkte gibt es.</p>
+        </div>
+        <div class="schwierigkeit">
+            <h4>Bevor es losgehen kann:</h4>
+            <p class="levelBeschreibung">Wähle hier ein Schwierigkeitslevel aus.</p>
+            <div class="levelButtons">
+                <a href="geoGuesserLeicht.html"><button id="level" class="schwierigkeitButton">Leicht</button></a>
+                <a href="geoGuesserMittel.html"><button id="level" class="schwierigkeitButton">Mittel</button></a>
+                <a href="geoGuesserSchwer.html"><button id="level" class="schwierigkeitButton">Schwer</button></a>
+            </div>
+        </div>
+        <a href="findKoordinaten.html">Zielpunkt bestimmen</a>
     <script src="../geoGuesser/geoGuesser.js"></script>
 </body>
 </html>
