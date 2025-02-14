@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let allClicks = [];
     let round = 1;
     
-    let roundMax = parseInt(document.getElementById("maxRounds").textContent)
+    
+    let roundMaxSign = document.getElementById("maxRounds")
+    let roundMax = 0
     console.log("roundMax: " + roundMax)
     let isGuessedIndicator = false
 
@@ -23,15 +25,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if(url.search == '?leicht'){
             document.getElementById("level1").innerHTML = "Leicht";
             absoluteLevel = "leicht"
-        }if(url.search == '?mittel'){
+        }else if(url.search == '?mittel'){
             document.getElementById("level1").innerHTML = "Mittel"
             absoluteLevel = "mittel"
-        }if(url.search == '?schwer'){
+        }else if(url.search == '?schwer'){
             document.getElementById("level1").innerHTML = "Schwer"
             absoluteLevel = "schwer"
         }
     }
     setChoosedLevel()
+
+    if(absoluteLevel == "leicht"){
+        roundMax = 4;
+        roundMaxSign.innerHTML = roundMax
+    }else if(absoluteLevel == "mittel"){
+        roundMax = 6;
+        roundMaxSign.innerHTML = roundMax
+    }else if(absoluteLevel == "schwer"){
+        roundMax = 8;
+        roundMaxSign.innerHTML = roundMax
+    }
+
     //Damit bei unterschiedlichen Bildgrößen die Punkte richtig gesetzt werden
     let bildgroesse = parseInt(getComputedStyle(image).width)
 
@@ -129,15 +143,53 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
     //let ziel1 = {x: Number(prompt("X Wert zwischen 0 und 512")), y: Number(prompt("Y Wert zwischen 0 und 512"))};
+    
+    let leichtZiele = {
+        leicht1: { x: (419 / verhaeltnisBerechnen(bildgroesse)), y: (343 / verhaeltnisBerechnen(bildgroesse)) },
+        leicht2: { x: (198 / verhaeltnisBerechnen(bildgroesse)), y: (340 / verhaeltnisBerechnen(bildgroesse)) },
+        leicht3: { x: (100 / verhaeltnisBerechnen(bildgroesse)), y: (400 / verhaeltnisBerechnen(bildgroesse)) },
+        leicht4: { x: (361 / verhaeltnisBerechnen(bildgroesse)), y: (150 / verhaeltnisBerechnen(bildgroesse)) }
+    };
+    
+    let mittelZiele = {
+        mittel1: { x: (219 / verhaeltnisBerechnen(bildgroesse)), y: (223 / verhaeltnisBerechnen(bildgroesse)) },
+        mittel2: { x: (356 / verhaeltnisBerechnen(bildgroesse)), y: (342 / verhaeltnisBerechnen(bildgroesse)) },
+        mittel3: { x: (356 / verhaeltnisBerechnen(bildgroesse)), y: (342 / verhaeltnisBerechnen(bildgroesse)) },
+        mittel4: { x: (356 / verhaeltnisBerechnen(bildgroesse)), y: (342 / verhaeltnisBerechnen(bildgroesse)) },
+        mittel5: { x: (356 / verhaeltnisBerechnen(bildgroesse)), y: (342 / verhaeltnisBerechnen(bildgroesse)) },
+        mittel6: { x: (356 / verhaeltnisBerechnen(bildgroesse)), y: (342 / verhaeltnisBerechnen(bildgroesse)) }
+    };
+    
+   
+    let schwerZiele = {
+        schwer1: { x: (300 / verhaeltnisBerechnen(bildgroesse)), y: (400 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer2: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer3: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer4: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer5: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer6: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer7: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+        schwer8: { x: (111 / verhaeltnisBerechnen(bildgroesse)), y: (200 / verhaeltnisBerechnen(bildgroesse)) },
+    };    
+    
+    /*
     let ziel1 = {x: (419 / verhaeltnisBerechnen(bildgroesse)), y: (343 / verhaeltnisBerechnen(bildgroesse))}; 
     let ziel2 = {x: (198 / verhaeltnisBerechnen(bildgroesse)), y: (340 / verhaeltnisBerechnen(bildgroesse))};
-    let ziele = {ziel1, ziel2}
+    */
+    let ziele = {};
+    if (absoluteLevel === "leicht") {
+        ziele = leichtZiele;
+    } else if (absoluteLevel === "mittel") {
+        ziele = mittelZiele;
+    } else if (absoluteLevel === "schwer") {
+        ziele = schwerZiele;
+    }
     function displayTarget() {
         let target = document.createElement("div");
         target.classList.add("dot");
         target.setAttribute("id", "target");
 
-        let currentZiel = ziele["ziel" + round];
+        let currentZiel = ziele[`${absoluteLevel}${round}`];
         target.style.left = (currentZiel.x + addX) + "px";
         target.style.top = (currentZiel.y + addY) + "px"; 
         target.style.zIndex = "10"
@@ -159,7 +211,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     function abstandBerechnen() {
         // Dynamischer Zugriff auf das aktuelle Ziel basierend auf der aktuellen Runde
-        let currentZiel = ziele["ziel" + round];
+        let currentZiel = ziele[`${absoluteLevel}${round}`];
         // Berechnung des Abstands zwischen dem aktuellen Ziel und dem letzten Klickpunkt
         let abstand = Math.sqrt(((currentZiel.x + addX) - allClicks[allClicks.length - 1].x)**2 + ((currentZiel.y + addY) - allClicks[allClicks.length - 1].y)**2);
         console.log("abstand: " + abstand);
