@@ -11,7 +11,7 @@
     <div id="geoGuesserInfo">
         <h1>Geo Guesser - NBS Edition</h1>
         <div class="obereLeiste">
-            <h3>Schwierigkeitslevel: Leicht</h3>
+            <h3>Schwierigkeitslevel: <span id="level1">t</span></h3>
             <h3 id="points">Deine Punkte: 0</h3>
         </div>
     </div>
@@ -61,7 +61,17 @@
         <a class="next" id="nextImg">&#10095;</a>
       </div>
       <br>
-      
+      <div id="endScreen" style="display: none">
+    	<h3 class="description">Geschafft!</h3>
+    	<div id="row">
+    		<p id="level2">ffff</p>
+    		<p id="endPoints"></p>
+    	</div>
+    	<p class="description">Gebe hier deinen Namen ein um im Ranking angezeigt zu werden:</p>
+    	<div id="nameInput"><input type="text" placeholder="Max Mustermann" id="getNameElement"></div>
+        <div id="submitButton"><a href="geoGuesser.html"><button>Abschicken</button></a></div>
+    </div>
+    <div id="abdunkeln" style="display: none"></div>
    
     <!--
     <div id="position">

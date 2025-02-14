@@ -1,3 +1,6 @@
+let url = new URL(window.location.href);
+//console.log(url.search);
+
 document.addEventListener("DOMContentLoaded", (event) => {
 
     let card = document.getElementById("bild");
@@ -15,6 +18,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let calcPosX = 0;
     let calcPosY = 0;
 
+    let absoluteLevel = ""
+    function setChoosedLevel() {
+        if(url.search == '?leicht'){
+            document.getElementById("level1").innerHTML = "Leicht";
+            absoluteLevel = "leicht"
+        }if(url.search == '?mittel'){
+            document.getElementById("level1").innerHTML = "Mittel"
+            absoluteLevel = "mittel"
+        }if(url.search == '?schwer'){
+            document.getElementById("level1").innerHTML = "Schwer"
+            absoluteLevel = "schwer"
+        }
+    }
+    setChoosedLevel()
     //Damit bei unterschiedlichen Bildgrößen die Punkte richtig gesetzt werden
     let bildgroesse = parseInt(getComputedStyle(image).width)
 
@@ -89,12 +106,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
         submitButton.addEventListener("click", handleSubmit); // Hinzufügen des Event-Listeners
     }
 
+    // den endscreen ausfüllen
+   
+    let endLevelScreen = document.getElementById("level1").textContent
+    let choosedLevel = document.getElementById("level2")
+    choosedLevel.innerHTML = "Schwierigkeitslevel: " + endLevelScreen
+    
+   
+
     function handleSubmit() {
         displayTarget();
         if(round < roundMax){
         nextRoundFunction();
         }else{
             console.log("end")
+            let endPoints = document.getElementById("endPoints")
+            endPoints.innerHTML = "Deine Punkte: " + punkteCounter
+            let endScreen = document.getElementById("endScreen")
+            let abdunkeln = document.getElementById("abdunkeln")
+            endScreen.style.display = "block";
+            abdunkeln.style.display = "block";
         }
     }
     //let ziel1 = {x: Number(prompt("X Wert zwischen 0 und 512")), y: Number(prompt("Y Wert zwischen 0 und 512"))};
@@ -180,7 +211,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     let einfuegeElemente = document.getElementsByClassName("bilder");
     for(let i = 0; i < einfuegeElemente.length; i++){
-        einfuegeElemente[i].setAttribute("src", "imgGEO/leicht/leicht_" + (i + 1) + "_" + round + ".jpg")
+        einfuegeElemente[i].setAttribute("src", "imgGEO/" + absoluteLevel + "/" + absoluteLevel + "_" + (i + 1) + "_" + round + ".jpg")
     }
     let nextRound = document.getElementById("nextRound")
     let rundenAnzeige = document.getElementById("rundenAnzeige")
@@ -195,7 +226,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 rundenAnzeige.innerHTML = "Runde: " + round + " von " + roundMax
             }
             for(let i = 0; i < einfuegeElemente.length; i++){
-                einfuegeElemente[i].setAttribute("src", "imgGEO/leicht/leicht_" + (i + 1) + "_" + round + ".jpg")
+                einfuegeElemente[i].setAttribute("src", "imgGEO/" + absoluteLevel + "/" + absoluteLevel + "_" + (i + 1) + "_" + round + ".jpg")
             }
             document.getElementById("dot").remove()
             document.getElementById("target").remove()

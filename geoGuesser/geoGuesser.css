@@ -200,3 +200,58 @@ h2{
     from {opacity: .4}
     to {opacity: 1}
   }
+
+#endScreen{
+    max-width: 300px;
+    padding: 7px;
+    background: rgb(65, 65, 65);
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+}
+#row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+#level2, 
+#endPoints{
+    margin: 0;
+    padding: 0;
+}
+.description{
+    text-align: center;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+#nameInput{
+    display: flex;
+    justify-content: center;
+}
+#nameInput input{
+     color: black;
+}
+#submitButton{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+#submitButton button{
+    color: black;
+}
+#abdunkeln{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    pointer-events: none;
+}
