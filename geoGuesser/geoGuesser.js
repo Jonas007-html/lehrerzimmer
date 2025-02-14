@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     function handleSubmit() {
         displayTarget();
+        stopCounter()
         if(round < roundMax){
         nextRoundFunction();
         }else{
@@ -270,6 +271,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     function nextRoundFunction() {
         nextRound.style.filter = "brightness(1)";
         nextRound.onclick = () => {
+            verbleibeneZeit = 60
+            startCounter()
             if(round < roundMax){
                 round++;
                 rundenAnzeige.innerHTML = "Runde: " + round + " von " + roundMax
@@ -293,7 +296,35 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
     
-   
+    let insertTime = document.getElementById("timer")
+    let verbleibeneZeit = 60
+    function counter() {
+        if(verbleibeneZeit > 10){
+            verbleibeneZeit = verbleibeneZeit - 1
+            insertTime.innerHTML = "Verbleibende Zeit: 00:" + verbleibeneZeit    
+        }else if(verbleibeneZeit <= 10 && verbleibeneZeit > 0){
+            verbleibeneZeit = verbleibeneZeit - 1
+            insertTime.innerHTML = "Verbleibende Zeit: 00:0" + verbleibeneZeit
+            if(verbleibeneZeit == 0){
+                stopCounter()
+                verloren()
+            }
+        }
+    }
+    let startTimer 
+    function startCounter() {
+        startTimer = setInterval(counter, 1000);
+    }
+    startCounter()
+    function stopCounter() {
+        clearInterval(startTimer)
+    }
+    
+    function verloren() {
+        document.getElementById("lostScreen").style.display = "block"
+        document.getElementById("abdunkeln").style.display = "block"
+    }
+    
     //
     //
     // img slider

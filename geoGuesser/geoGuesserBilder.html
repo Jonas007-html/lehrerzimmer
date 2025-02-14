@@ -11,8 +11,9 @@
     <div id="geoGuesserInfo">
         <h1>Geo Guesser - NBS Edition</h1>
         <div class="obereLeiste">
-            <h3>Schwierigkeitslevel: <span id="level1">t</span></h3>
+            <h3>Schwierigkeitslevel: <span id="level1">level</span></h3>
             <h3 id="points">Deine Punkte: 0</h3>
+            <h3 id="timer">verbleibende Zeit: 01:00</h3>
         </div>
     </div>
     <h2 id="rundenAnzeige">Runde: 1 <span>von </span><span id="maxRounds">2</span></h2>
@@ -61,8 +62,8 @@
         <a class="next" id="nextImg">&#10095;</a>
       </div>
       <br>
-      <div id="endScreen" style="display: none">
-    	<h3 class="description">Geschafft!</h3>
+    <div id="endScreen" style="display: none">
+        <h3 class="description">Geschafft!</h3>
     	<div id="row">
     		<p id="level2">ffff</p>
     		<p id="endPoints"></p>
@@ -70,6 +71,11 @@
     	<p class="description">Gebe hier deinen Namen ein um im Ranking angezeigt zu werden:</p>
     	<div id="nameInput"><input type="text" placeholder="Max Mustermann" id="getNameElement"></div>
         <div id="submitButton"><a href="geoGuesser.html"><button>Abschicken</button></a></div>
+    </div>
+    <div id="lostScreen" style="display: none;">
+        <h3 class="description">Verloren!</h3>
+        <p class="description">Leider wurde für das Abgeben einer Antwort zu lange gewartet. Sie werden nun zur Startseite weitergeleitet.</p>
+        <div id="submitButton"><a href="geoGuesser.html"><button>Okay</button></a></div>
     </div>
     <div id="abdunkeln" style="display: none"></div>
    

@@ -122,6 +122,8 @@ h2{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: 	wrap;
+    text-align: center;
 }
 #parent{
     position: relative;
@@ -212,6 +214,18 @@ h2{
     transform: translate(-50%, -50%);
     z-index: 1001;
 }
+
+#lostScreen{
+    max-width: 300px;
+    padding: 7px;
+    background: rgb(65, 65, 65);
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+}
 #row{
     display: flex;
     flex-wrap: wrap;
@@ -253,5 +267,4 @@ h2{
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
-    pointer-events: none;
 }
