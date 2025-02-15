@@ -1,7 +1,7 @@
 let gameField = document.getElementById("gameField");
 
-let zeilen = 30;
-let spalten = 30;
+let zeilen = 20;
+let spalten = 20;
 
 let direction = "down"
 
@@ -32,6 +32,36 @@ window.addEventListener("keydown", function(e){
         direction = "right"
     }
 })
+
+let touchStartX = 0;
+let touchStartY = 0;
+window.addEventListener("touchstart", function(e){
+    let touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+})
+
+window.addEventListener("touchmove", function(e){
+    let touch = e.touches[0];
+    let x = touch.clientX;
+    let y = touch.clientY;
+    let dx = x - touchStartX;
+    let dy = y - touchStartY;
+    if(Math.abs(dx) > Math.abs(dy)){
+        if(dx > 0 && direction != "left"){
+            direction = "right";
+        }else if(dx < 0 && direction != "right"){
+            direction = "left";
+        }
+    }else{
+        if(dy > 0 && direction != "up"){
+            direction = "down";
+        }else if(dy < 0 && direction != "down"){
+            direction = "up";
+        }
+    }
+})
+
 
 let snake = [{x: 1, y: 2}, {x: 1, y: 1}, {x: 1, y: 0}];
 snake.forEach(function(e){
