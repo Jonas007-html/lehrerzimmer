@@ -12,15 +12,39 @@
         <div id="geoGuesserInfo">
             <h1>Geo Guesser - NBS Edition</h1>
             <h4>So Funktioniert's:</h4>
-            <p>Es werden von jedem Standort 3 Bilder gezeigt, die beliebig oft angeschaut werden können. Jedoch muss innerhalb 1 Minute auf der Karte rechts unten ein Tipp abgegeben werden welcher Standort gesucht wird. <br> Natürlich gilt: Desto näher man seinen Standort am Zielpunkt setzt, desto mehr Punkte gibt es.</p>
+            <p>Es werden von jedem Standort 3 Bilder gezeigt, die beliebig oft angeschaut werden können. Innerhalb einer vorgegebenen Zeit muss auf der Karte rechts unten ein Tipp abgegeben werden welcher Standort gesucht wird. <br> Natürlich gilt: Desto näher man seinen Standort am Zielpunkt setzt, desto mehr Punkte gibt es.</p>
         </div>
         <div class="schwierigkeit">
             <h4>Bevor es losgehen kann:</h4>
             <p class="levelBeschreibung">Wähle hier ein Schwierigkeitslevel aus.</p>
             <div class="levelButtons">
-                <a href="geoGuesserBilder.html?leicht"><button id="level" class="schwierigkeitButton">Leicht</button></a>
-                <a href="geoGuesserBilder.html?mittel"><button id="level" class="schwierigkeitButton">Mittel</button></a>
-                <a href="geoGuesserBilder.html?schwer"><button id="level" class="schwierigkeitButton">Schwer</button></a>
+                <div class="info">
+                    <a href="geoGuesserBilder.html?leicht" class="levelButton"><button id="level" class="schwierigkeitButton">Leicht</button></a>
+                    <ul>
+                        <li>4 Runden</li>
+                        <li>einfache Standorte</li>
+                        <li>max. 750 Punkte je Runde</li>
+                        <li>60 Sekunden Zeit</li>
+                    </ul>
+                </div>
+                <div class="info">
+                    <a href="geoGuesserBilder.html?mittel" class="levelButton"><button id="level" class="schwierigkeitButton">Mittel</button></a>
+                    <ul>
+                        <li>6 Runden</li>
+                        <li>mittel schwierige Standorte</li>
+                        <li>max. 500 Punkte je Runde</li>
+                        <li>45 Sekunden Zeit</li>
+                    </ul>
+                </div>
+                <div class="info">
+                    <a href="geoGuesserBilder.html?schwer" class="levelButton"><button id="level" class="schwierigkeitButton">Schwer</button></a>
+                    <ul>
+                        <li>8 Runden</li>
+                        <li>schwierige Standorte</li>
+                        <li>max. 375 Punkte je Runde</li>
+                        <li>30 Sekunden Zeit</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <a href="findKoordinaten.html" style="position: fixed; bottom: 0; right: 0;">Zielpunkt bestimmen</a>

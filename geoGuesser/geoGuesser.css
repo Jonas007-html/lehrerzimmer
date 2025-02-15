@@ -80,6 +80,7 @@ p{
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 #level{
     padding: 10px;
@@ -267,4 +268,17 @@ h2{
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
+}
+.levelButton button{
+    width: 100%;
+}
+.info{
+    background: rgb(51, 51, 51);
+    padding: 7px;
+    border-radius: 7px;
+    margin: 5px;
+    min-width: 270px;
+}
+.info ul{
+    margin: 0;
 }

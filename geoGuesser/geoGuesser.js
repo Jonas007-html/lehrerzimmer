@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     let punkteCounter = 0
-
+    /*
     function punkteBerechnen() {
         let abstand = abstandBerechnen();
         let points = document.getElementById("points")
@@ -243,6 +243,51 @@ document.addEventListener("DOMContentLoaded", (event) => {
             points.innerHTML = "Deine Punkte: " + punkteCounter
         }
     }
+    */
+    function punkteBerechnen() {
+        let abstand = abstandBerechnen();
+        let points = document.getElementById("points")
+        if(absoluteLevel == "leicht"){
+            if(abstand > 20 && abstand * 4 < 750) { // die 20 sind 20 px toleranz
+                let punkte = 0
+                punkte = Math.round(750 - abstand * 4) // von max 750 punkten wier der vierfache abstand abgezogen
+                punkteCounter = punkteCounter + punkte
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else if(750 - abstand >= 730){
+                punkteCounter = punkteCounter + 750
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else{
+                punkteCounter = punkteCounter + 0
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }
+        }else if(absoluteLevel == "mittel"){
+            if(abstand > 20 && abstand * 6 < 500) { 
+                let punkte = 0
+                punkte = Math.round(500 - abstand * 6) 
+                punkteCounter = punkteCounter + punkte
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else if(500 - abstand >= 480){
+                punkteCounter = punkteCounter + 500
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else{
+                punkteCounter = punkteCounter + 0
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }
+        }else if(absoluteLevel == "schwer"){
+            if(abstand > 20 && abstand * 8 < 375) { 
+                let punkte = 0
+                punkte = Math.round(375 - abstand * 8) 
+                punkteCounter = punkteCounter + punkte
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else if(375 - abstand >= 355){
+                punkteCounter = punkteCounter + 375
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }else{
+                punkteCounter = punkteCounter + 0
+                points.innerHTML = "Deine Punkte: " + punkteCounter
+            }
+        }
+    } 
 
     let onOffButton = document.getElementById("switch") 
     let karte = document.getElementById("bild")
@@ -271,7 +316,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     function nextRoundFunction() {
         nextRound.style.filter = "brightness(1)";
         nextRound.onclick = () => {
-            verbleibeneZeit = 60
+            setTimer()
             startCounter()
             if(round < roundMax){
                 round++;
@@ -297,9 +342,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
     
     let insertTime = document.getElementById("timer")
-    let verbleibeneZeit = 60
+    let verbleibeneZeit
+    function setTimer() {
+        if(absoluteLevel == "leicht"){
+            verbleibeneZeit = 61
+        }else if(absoluteLevel == "mittel"){
+            verbleibeneZeit = 46
+        }else if(absoluteLevel == "schwer"){
+            verbleibeneZeit = 31
+        }
+    }
+    setTimer()
     function counter() {
-        if(verbleibeneZeit > 10){
+        if(verbleibeneZeit > 60){
+            verbleibeneZeit = verbleibeneZeit - 1
+            insertTime.innerHTML = "Verbleibende Zeit: 01:00"
+        }else if(verbleibeneZeit > 10){
             verbleibeneZeit = verbleibeneZeit - 1
             insertTime.innerHTML = "Verbleibende Zeit: 00:" + verbleibeneZeit    
         }else if(verbleibeneZeit <= 10 && verbleibeneZeit > 0){
