@@ -53,7 +53,7 @@ function moveSnake(){
         neuerKopf.x++;
     }
     //console.log("neuerKopf:", neuerKopf);
-    if (neuerKopf.x < 0 || neuerKopf.x >= spalten || neuerKopf.y < 0 || neuerKopf.y >= zeilen) {
+    if (neuerKopf.x < 0 || neuerKopf.x >= spalten || neuerKopf.y < 0 || neuerKopf.y >= zeilen || checkSelfCollision()) {
         clearInterval(spielAblaufen);
         console.log("Game Over");
     } else {
@@ -87,4 +87,14 @@ function checkCollision(){
         generateFood();
     }
     return isCollision;
+}
+
+function checkSelfCollision() {
+    let kopf = snake[0];
+    for (let i = 1; i < snake.length; i++) {
+        if (kopf.x === snake[i].x && kopf.y === snake[i].y) {
+            return true;
+        }
+    }
+    return false;
 }
