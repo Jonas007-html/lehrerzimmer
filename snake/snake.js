@@ -58,6 +58,7 @@ window.addEventListener("touchstart", function(e) {
 });
 
 window.addEventListener("touchmove", function(e) {
+    e.preventDefault();
     let touch = e.touches[0];
     let x = touch.clientX;
     let y = touch.clientY;
@@ -76,7 +77,7 @@ window.addEventListener("touchmove", function(e) {
             direction = "up";
         }
     }
-});
+}, { passive: false });
 
 function moveSnake() {
     let kopf = snake[0];
