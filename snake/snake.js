@@ -17,7 +17,7 @@ let touchStartY = 0;
 let originalSnake = [{ x: 1, y: 2 }, { x: 1, y: 1 }, { x: 1, y: 0 }]; // wird nicht verändert sondern wieder verwendet wenn eine neue Runde gestartet wird
 let snake = [...originalSnake];
 
-let anzahlFood = 3
+let anzahlFood = 3;
 
 function createWorld() {
     let field = "";
@@ -58,12 +58,14 @@ window.addEventListener("touchstart", function(e) {
 });
 
 window.addEventListener("touchmove", function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Verhindert das Standardverhalten des Browsers (Seitenaktualisierung)
+    
     let touch = e.touches[0];
     let x = touch.clientX;
     let y = touch.clientY;
     let dx = x - touchStartX;
     let dy = y - touchStartY;
+
     if (Math.abs(dx) > Math.abs(dy)) {
         if (dx > 0 && direction != "left") {
             direction = "right";
@@ -77,7 +79,7 @@ window.addEventListener("touchmove", function(e) {
             direction = "up";
         }
     }
-}, { passive: false });
+}, { passive: false }); // Setzen Sie den Listener auf nicht-passiv, um e.preventDefault() zu verwenden
 
 function moveSnake() {
     let kopf = snake[0];
@@ -100,9 +102,9 @@ function moveSnake() {
             let schwanz = snake.pop();
             document.querySelector(`[data-cords="${schwanz.x}_${schwanz.y}"]`).classList.remove("snake");
         }
-        let tatsächlicheEssensAnzahl = document.querySelectorAll(".food")
-        if(tatsächlicheEssensAnzahl < anzahlFood){ // dient als absicherung falls sehr schnell hintereinander 2 mal gegessen wird damit immer die ursprücngliche anzahl wieer hergestellt wird ( manchmal waren dann nur noch 1 weniger da)
-            generateFood()
+        let tatsächlicheEssensAnzahl = document.querySelectorAll(".food");
+        if (tatsächlicheEssensAnzahl.length < anzahlFood) {
+            generateFood();
         }
         snake.unshift(neuerKopf);
         document.querySelector(`[data-cords="${neuerKopf.x}_${neuerKopf.y}"]`).classList.add("snake");
@@ -114,7 +116,7 @@ function generateFood() {
     let y = Math.floor(Math.random() * zeilen);
     document.querySelector(`[data-cords="${x}_${y}"]`).classList.add("food");
 }
-for(let i = 0; i < anzahlFood; i++){
+for (let i = 0; i < anzahlFood; i++) {
     generateFood();
 }
 
@@ -122,7 +124,7 @@ function checkCollision() {
     let isCollision = false;
     let kopf = snake[0];
     let food = document.querySelectorAll(".food");
-    for(let i = 0; i < food.length; i++){
+    for (let i = 0; i < food.length; i++) {
         if (kopf.x == food[i].getAttribute("data-cords").split("_")[0] && kopf.y == food[i].getAttribute("data-cords").split("_")[1]) {
             console.log("collision");
             punkte = punkte + 1;
@@ -165,13 +167,13 @@ function loose() {
     spielLaeuft = false;
     direction = "down";
     startButton.innerText = "Neue Runde starten";
-    startButton.removeEventListener("click", startGame); 
+    startButton.removeEventListener("click", startGame);
     startButton.addEventListener("click", () => {
         allesZuruecksetzten();
         spielLaeuft = false;
-        startGame()
+        startGame();
         startButton.innerText = "Spiel pausieren";
-        startButton.addEventListener("click", startGame); 
+        startButton.addEventListener("click", startGame);
     }, { once: true }); // Der Listener wird nur einmal ausgelöst
 }
 
@@ -184,14 +186,14 @@ function allesZuruecksetzten() {
         alteSchlange[i].classList.remove("snake");
     }
 
-    let altesEssen = document.querySelectorAll(".food")
-    for(let i = 0; i < altesEssen.length; i++){
-        altesEssen[i].classList.remove("food")
+    let altesEssen = document.querySelectorAll(".food");
+    for (let i = 0; i < altesEssen.length; i++) {
+        altesEssen[i].classList.remove("food");
     }
-    for(let i = 0; i < anzahlFood; i++){
-        generateFood()
+    for (let i = 0; i < anzahlFood; i++) {
+        generateFood();
     }
- 
+
     originalSnake.forEach(function(e) {
         document.querySelector(`[data-cords="${e.x}_${e.y}"]`).classList.add("snake");
     });
