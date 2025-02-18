@@ -8,8 +8,14 @@
 </head>
 <body>
     <h1>Snake</h1>
-    <input type="number" value="10" id="zeilen">
-    <input type="number" value="10" id="spalten"> 
+    <label for="zeilen">Zeilen:</label>
+    <input type="number" value="15" id="zeilen">
+    <label for="spalten">Spalten:</label>
+    <input type="number" value="15" id="spalten"> 
+    <label for="speed">Geschwindigkeit: (je kleiner desto schneller)</label>
+    <input type="number" value="150" id="speed" step="50">
+    <label for="food">Anzahl an Essen</label>
+    <input type="number" value="3" id="food">
     <div id="gameField"></div>
     <div id="startButton">
         <button id="start">Spiel starten</button>

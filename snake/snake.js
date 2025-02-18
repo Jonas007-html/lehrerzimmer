@@ -1,17 +1,19 @@
 let gameField = document.getElementById("gameField");
 
-let choosedZeilen = document.getElementById("zeilen").value
-let choosedSpalten = document.getElementById("spalten").value
+let choosedZeilen = document.getElementById("zeilen")
+let choosedSpalten = document.getElementById("spalten")
+let choosedSpeed = document.getElementById("speed")
 
 
-let zeilen = choosedZeilen;
-let spalten = choosdenSpalten;
+let zeilen = choosedZeilen.value;
+let spalten = choosedSpalten.value;
+let geschwindigkeit = choosedSpeed.value;
 
 let direction = "down";
 let punkte = 0;
 let innerScore = document.getElementById("scoreDisplay");
 
-let geschwindigkeit = 150;
+
 let spielAblaufen;
 let spielLaeuft = false;
 
@@ -21,7 +23,30 @@ let touchStartY = 0;
 let originalSnake = [{ x: 1, y: 2 }, { x: 1, y: 1 }, { x: 1, y: 0 }]; // wird nicht verändert sondern wieder verwendet wenn eine neue Runde gestartet wird
 let snake = [...originalSnake];
 
-let anzahlFood = 3;
+let choosedFood = document.getElementById("food");
+let anzahlFood = choosedFood.value;
+
+choosedZeilen.addEventListener("change", function() {
+    zeilen = choosedZeilen.value;
+    createWorld();
+    allesZuruecksetzten()
+});
+
+choosedSpalten.addEventListener("change", function() {
+    spalten = choosedSpalten.value;
+    createWorld();
+    allesZuruecksetzten()
+});
+
+choosedSpeed.addEventListener("change", function() {
+    geschwindigkeit = choosedSpeed.value;
+    allesZuruecksetzten()
+})
+
+choosedFood.addEventListener("change", function() {
+    anzahlFood = choosedFood.value;
+    allesZuruecksetzten()
+});
 
 function createWorld() {
     let field = "";

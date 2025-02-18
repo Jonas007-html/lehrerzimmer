@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Rechner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .inputField {
+            background: rgb(98, 98, 98);
+            margin: 10px;
+        }
+        .spalte{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            margin: 5px
+        }
+    </style>
+</head>
+<body>
+    <h1>Matrix Rechner 1.0</h1>
+    <div id="rechenBereich">
+        <div id="inputField1" class="inputField">
+            <div id="spalte1_1" class="spalte">
+                <input type="number" id="1_1" value="1">
+                <input type="number" id="1_2" value="3">
+                <input type="number" id="1_3" value="-4">
+                <input type="number" id="1_4" value="2">
+            </div>
+            <div id="spalte2_1" class="spalte">
+                <input type="number" id="2_1" value="2">
+                <input type="number" id="2_2" value="-1">
+                <input type="number" id="2_3" value="5">
+                <input type="number" id="2_4" value="3">
+            </div>
+            <div id="spalte3_1" class="spalte">
+                <input type="number" id="3_1" value="3">
+                <input type="number" id="3_2" value="2">
+                <input type="number" id="3_3" value="-1">
+                <input type="number" id="3_4" value="4">
+            </div>
+        </div>
+        <div id="inputField2" class="inputField">
+            <div id="spalte1_2" class="spalte">
+                <input type="number" id="1_1">
+                <input type="number" id="1_2">
+                <input type="number" id="1_3">
+                <input type="number" id="1_4">
+            </div>
+            <div id="spalte2_2" class="spalte">
+                <input type="number" id="2_1">
+                <input type="number" id="2_2">
+                <input type="number" id="2_3">
+                <input type="number" id="2_4">
+            </div>
+            <div id="spalte3_2" class="spalte">
+                <input type="number" id="3_1">
+                <input type="number" id="3_2">
+                <input type="number" id="3_3">
+                <input type="number" id="3_4">
+            </div>
+        </div>
+        <div id="inputField" class="inputField">
+            <div id="spalte1_3" class="spalte">
+                <input type="number" id="1_1">
+                <input type="number" id="1_2">
+                <input type="number" id="1_3">
+                <input type="number" id="1_4">
+            </div>
+            <div id="spalte2_3" class="spalte">
+                <input type="number" id="2_1">
+                <input type="number" id="2_2">
+                <input type="number" id="2_3">
+                <input type="number" id="2_4">
+            </div>
+            <div id="spalte3_3" class="spalte">
+                <input type="number" id="3_1">
+                <input type="number" id="3_2">
+                <input type="number" id="3_3">
+                <input type="number" id="3_4">
+            </div>
+        </div>
+    </div>
+
+    <div class="setParemeter">
+        <div id="2a">
+            <span>(IIa) = </span> 
+            <select name="spalte1fuer2a" id="spalte1Fuer2b">
+                <option value="1">Spalte 1</option>
+                <option value="2">Spalte 2</option>
+                <option value="3">Spalte 3</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator1Fuer2b" value="1">
+            <select name="vorzeichenfuer2a" id="rechenzeichenFuer2b">
+                <option value="+">+</option>
+                <option value="-" selected="">-</option>
+            </select>
+            <select name="spalte2fuer2a" id="spalte2Fuer2b">
+                <option value="1">Spalte 1</option>
+                <option value="2" selected="">Spalte 2</option>
+                <option value="3">Spalte 3</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator2Fuer2b" value="1">
+        </div>
+        <div id="3a">
+            <span>(IIIa) = </span>
+            <select name="spalte1fuer3a" id="spalte1Fuer3b">
+                <option value="1">Spalte 1</option>
+                <option value="2">Spalte 2</option>
+                <option value="3">Spalte 3</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator1Fuer3b" value="1">
+            <select name="vorzeichenfuer3a" id="rechenzeichenFuer3b">
+                <option value="+">+</option>
+                <option value="-" selected="">-</option>
+            </select>
+            <select name="spalte2fuer3a" id="spalte2Fuer3b">
+                <option value="1">Spalte 1</option>
+                <option value="2" selected="">Spalte 2</option>
+                <option value="3">Spalte 3</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator2Fuer3b" value="1">
+        </div>
+        <div id="3b">
+            <span>(IIIb) = </span>
+            <select name="spalte1fuer3b" id="spalte1Fuer3c">
+                <option value="1">Spalte 1</option>
+                <option value="2">Spalte 2a</option>
+                <option value="3">Spalte 3a</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator1Fuer3c" value="1">
+            <select name="vorzeichenfuer3b" id="rechenzeichenFuer3c">
+                <option value="+">+</option>
+                <option value="-" selected="">-</option>
+            </select>
+            <select name="spalte2fuer3b" id="spalte2Fuer3c">
+                <option value="1">Spalte 1</option>
+                <option value="2" selected="">Spalte 2a</option>
+                <option value="3">Spalte 3a</option>
+            </select>
+            <span>*</span>
+            <input type="number" id="multiplikator2Fuer3c" value="1">
+        </div>
+    </div>
+    <script>
+        window.addEventListener("change", function () {
+
+            let spalte1_1 = document.getElementById("spalte1_1").children
+            let spalte2_1 = document.getElementById("spalte2_1").children
+            let spalte3_1 = document.getElementById("spalte3_1").children
+
+            let spalte1_2 = document.getElementById("spalte1_2").children
+            let spalte2_2 = document.getElementById("spalte2_2").children
+            let spalte3_2 = document.getElementById("spalte3_2").children
+
+            let spalte1_3 = document.getElementById("spalte1_3").children
+            let spalte2_3 = document.getElementById("spalte2_3").children
+            let spalte3_3 = document.getElementById("spalte3_3").children
+
+            let spalte1_1Werte = []
+            let spalte2_1Werte = []
+            let spalte3_1Werte = []
+
+            let spalte1_2Werte = []
+            let spalte2_2Werte = []
+            let spalte3_2Werte = []
+
+            let spalte1Fuer2b = parseInt(document.getElementById("spalte1Fuer2b").value)
+            let spalte2Fuer2b = parseInt(document.getElementById("spalte2Fuer2b").value)
+            let multiplikator1Fuer2b = parseInt(document.getElementById("multiplikator1Fuer2b").value)
+            let multiplikator2Fuer2b = parseInt(document.getElementById("multiplikator2Fuer2b").value)
+            let rechenzeichenFuer2b = document.getElementById("rechenzeichenFuer2b").value
+
+            let spalte1Fuer3b = parseInt(document.getElementById("spalte1Fuer3b").value)
+            let spalte2Fuer3b = parseInt(document.getElementById("spalte2Fuer3b").value)
+            let multiplikator1Fuer3b = parseInt(document.getElementById("multiplikator1Fuer3b").value)
+            let multiplikator2Fuer3b = parseInt(document.getElementById("multiplikator2Fuer3b").value)
+            let rechenzeichenFuer3b = document.getElementById("rechenzeichenFuer3b").value
+
+            let spalte1Fuer3c = parseInt(document.getElementById("spalte1Fuer3c").value)
+            let spalte2Fuer3c = parseInt(document.getElementById("spalte2Fuer3c").value)
+            let multiplikator1Fuer3c = parseInt(document.getElementById("multiplikator1Fuer3c").value)
+            let multiplikator2Fuer3c = parseInt(document.getElementById("multiplikator2Fuer3c").value)
+            let rechenzeichenFuer3c = document.getElementById("rechenzeichenFuer3c").value
+
+            for(let i = 0; i < spalte1_1.length; i++){
+                spalte1_1Werte.push(spalte1_1[i].value)
+                spalte2_1Werte.push(spalte2_1[i].value)
+                spalte3_1Werte.push(spalte3_1[i].value)
+            }
+
+            // werte aus der 1. spalte (block1) in die 1. spalte (block 2) übertragen
+            for(let i = 0; i < spalte1_2.length; i++){
+                spalte1_2[i].value = parseInt(spalte1_1Werte[i]);
+            }
+
+            // werte aus der 1. spalte (block 1) in die 2. spalte (block 1) addieren und in spalte 2 (block 2) speichern
+            for(let i = 0; i < spalte1_2.length; i++){
+                let wert1;
+                let wert2;
+                
+                if (spalte1Fuer2b === 1) {
+                    wert1 = spalte1_1Werte[i];
+                } else if (spalte1Fuer2b === 2) {
+                    wert1 = spalte2_1Werte[i];
+                } else if (spalte1Fuer2b === 3) {
+                    wert1 = spalte3_1Werte[i];
+                }
+
+                if (spalte2Fuer2b === 1) {
+                    wert2 = spalte1_1Werte[i];
+                } else if (spalte2Fuer2b === 2) {
+                    wert2 = spalte2_1Werte[i];
+                } else if (spalte2Fuer2b === 3) {
+                    wert2 = spalte3_1Werte[i];
+                }
+
+                if(rechenzeichenFuer2b === "+"){
+                    spalte2_2[i].value = parseInt(wert1) * multiplikator1Fuer2b + parseInt(wert2) * multiplikator2Fuer2b;
+                } else if(rechenzeichenFuer2b === "-"){
+                    spalte2_2[i].value = parseInt(wert1) * multiplikator1Fuer2b - parseInt(wert2) * multiplikator2Fuer2b;
+                }
+            }
+
+            // werte aus der 2. spalte (block 1) und die werte aus der 3. spalte (block 1) addieren und in spalte 3 (block 2) speichern
+            for(let i = 0; i < spalte1_2.length; i++){
+                let wert1;
+                let wert2;
+
+                if (spalte1Fuer3b === 1) {
+                    wert1 = spalte1_1Werte[i];
+                } else if (spalte1Fuer3b === 2) {
+                    wert1 = spalte2_1Werte[i];
+                } else if (spalte1Fuer3b === 3) {
+                    wert1 = spalte3_1Werte[i];
+                }
+
+                if (spalte2Fuer3b === 1) {
+                    wert2 = spalte1_1Werte[i];
+                } else if (spalte2Fuer3b === 2) {
+                    wert2 = spalte2_1Werte[i];
+                } else if (spalte2Fuer3b === 3) {
+                    wert2 = spalte3_1Werte[i];
+                }
+
+                if(rechenzeichenFuer3b === "+"){
+                    spalte3_2[i].value = parseInt(wert1) * multiplikator1Fuer3b + parseInt(wert2) * multiplikator2Fuer3b;
+                } else if(rechenzeichenFuer3b === "-"){
+                    spalte3_2[i].value = parseInt(wert1) * multiplikator1Fuer3b - parseInt(wert2) * multiplikator2Fuer3b;
+                }
+
+            }
+
+            // werte aus dem block 2 in array speichern
+            for(let i = 0; i < spalte1_1.length; i++){
+                spalte1_2Werte.push(spalte1_2[i].value)
+                spalte2_2Werte.push(spalte2_2[i].value)
+                spalte3_2Werte.push(spalte3_2[i].value)
+            }
+            
+            // werte aus der 1. spalte (block1) in die 1. spalte (block 3) übertragen
+            for(let i = 0; i < spalte1_2.length; i++){
+                spalte1_3[i].value = parseInt(spalte1_1Werte[i]);
+            }
+
+            // werte aus der 2. spalte (block2) in die 2. spalte (block 3) übertragen
+            for(let i = 0; i < spalte1_2.length; i++){
+                spalte2_3[i].value = parseInt(spalte2_2Werte[i]);
+            }
+
+            // werte aus der 2. spalte und der 3. spalte aus dem block 2 addieren und in block 3 speichern
+            for(let i = 0; i < spalte1_2.length; i++){
+                let wert1;
+                let wert2;
+
+                if (spalte1Fuer3c === 1) {
+                    wert1 = spalte1_2Werte[i];
+                } else if (spalte1Fuer3c === 2) {
+                    wert1 = spalte2_2Werte[i];
+                } else if (spalte1Fuer3c === 3) {
+                    wert1 = spalte3_2Werte[i];
+                }
+
+                if (spalte2Fuer3c === 1) {
+                    wert2 = spalte1_2Werte[i];
+                } else if (spalte2Fuer3c === 2) {
+                    wert2 = spalte2_2Werte[i];
+                } else if (spalte2Fuer3c === 3) {
+                    wert2 = spalte3_2Werte[i];
+                } 
+
+                if(rechenzeichenFuer3c === "+"){
+                    spalte3_3[i].value = parseInt(wert1) * multiplikator1Fuer3c + parseInt(wert2) * multiplikator2Fuer3c;
+                } else if(rechenzeichenFuer3c === "-"){
+                    spalte3_3[i].value = parseInt(wert1) * multiplikator1Fuer3c - parseInt(wert2) * multiplikator2Fuer3c;
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>
