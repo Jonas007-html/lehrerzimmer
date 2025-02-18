@@ -1,7 +1,11 @@
 let gameField = document.getElementById("gameField");
 
-let zeilen = 15;
-let spalten = 15;
+let choosedZeilen = document.getElementById("zeilen").value
+let choosedSpalten = document.getElementById("spalten").value
+
+
+let zeilen = choosedZeilen;
+let spalten = choosdenSpalten;
 
 let direction = "down";
 let punkte = 0;
