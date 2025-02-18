@@ -165,7 +165,7 @@ startButton.addEventListener("click", startGame);
 
 function loose() {
     spielLaeuft = false;
-    direction = "down";
+    
     startButton.innerText = "Neue Runde starten";
     startButton.removeEventListener("click", startGame);
     startButton.addEventListener("click", () => {
@@ -180,7 +180,7 @@ function loose() {
 function allesZuruecksetzten() {
     punkte = 0;
     innerScore.innerText = punkte + " Punkte";
-
+    direction = "down";
     let alteSchlange = document.querySelectorAll(".snake");
     for (let i = 0; i < alteSchlange.length; i++) {
         alteSchlange[i].classList.remove("snake");
